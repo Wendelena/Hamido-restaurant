@@ -27,3 +27,12 @@ https://foursquare.com/v/hamido/4b3a4591f964a520776325e3/menu
 
 Yelp reviews - 
 https://www.yelp.com/biz/hamido-dearborn
+
+
+
+first section - About  the restaurant
+
+second section - about the food.
+
+location info
+google map
