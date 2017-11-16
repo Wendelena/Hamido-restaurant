@@ -28,8 +28,20 @@ https://foursquare.com/v/hamido/4b3a4591f964a520776325e3/menu
 Yelp reviews - 
 https://www.yelp.com/biz/hamido-dearborn
 
+<<<<<<< HEAD
 Homepage template:
 https://www.w3schools.com/w3css/tryw3css_templates_gourmet_catering.htm#menu
 
 Menue template with pictures:
 https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_food_blog&stacked=h
+=======
+
+
+first section - About  the restaurant
+
+second section - about the food.
+
+location info
+google map
+>>>>>>> 5d4235bd93c5be5dfcf5bbfd8aaa4d1b526aaeaf
+
