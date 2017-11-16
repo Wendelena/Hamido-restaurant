@@ -45,3 +45,8 @@ location info
 google map
 >>>>>>> 5d4235bd93c5be5dfcf5bbfd8aaa4d1b526aaeaf
 
+Homepage template:
+https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_gourmet_catering&stacked=h
+
+menu template:
+https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_food_blog&stacked=h
