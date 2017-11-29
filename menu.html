@@ -12,10 +12,13 @@
     <title>Menu - Hamido Restaurant</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Custom CSS -->
     <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="general.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,38 +31,54 @@
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle"
-                        data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar">a</span>
-                    <span class="icon-bar">b</span>
-                    <span class="icon-bar">c</span>
-                </button>
-                <a class="navbar-brand" href="#">Hamido Menu</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#appetizers">Appetizers</a>
-                    </li>
-                    <li>
-                        <a href="#entree">Entrée</a>
-                    </li>
-                    <li>
-                        <a href="#desserts">Desserts</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+<header>
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+            <a href="home.html" class="w3-bar-item w3-button">
+                &lt; Hamido</a>
+            <!-- Right-sided navbar links. Hide them on small screens -->
+            <nav class="w3-right w3-hide-small">
+                <a href="#appetizers" class="w3-bar-item w3-button">Appetizers</a>
+                <a href="#entree" class="w3-bar-item w3-button">Entrée</a>
+                <a href="#desserts" class="w3-bar-item w3-button">Desserts</a>
+                <a href="menu.html" class="w3-bar-item w3-button">Menu</a>
+            </nav>
         </div>
-        <!-- /.container -->
-    </nav>
+    </div>
+</header>
+
+    <!--&lt;!&ndash; Navigation &ndash;&gt;-->
+    <!--<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">-->
+        <!--<div class="container">-->
+            <!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+            <!--<div class="navbar-header">-->
+                <!--<button type="button" class="navbar-toggle"-->
+                        <!--data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+                    <!--<span class="sr-only">Toggle navigation</span>-->
+                    <!--<span class="icon-bar">a</span>-->
+                    <!--<span class="icon-bar">b</span>-->
+                    <!--<span class="icon-bar">c</span>-->
+                <!--</button>-->
+                <!--<a class="navbar-brand" href="#">Hamido Menu</a>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+            <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+                <!--<ul class="nav navbar-nav">-->
+                    <!--<li>-->
+                        <!--<a href="#appetizers">Appetizers</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="#entree">Entrée</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="#desserts">Desserts</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+        <!--</div>-->
+        <!--&lt;!&ndash; /.container &ndash;&gt;-->
+    <!--</nav>-->
 
     <!-- Page Content -->
     <div class="container">
@@ -233,42 +252,15 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
 </body>
-
-</html>
-    <title>Hamido menu</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="general.css">
-</head>
-
-<body>
-    <header>
-        <div class="w3-top">
-            <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
-                <a href="home.html" class="w3-bar-item w3-button">
-                    <-Hamido</a>
-                        <!-- Right-sided navbar links. Hide them on small screens -->
-                        <div class="w3-right w3-hide-small">
-                            <a href="#dissert" class="w3-bar-item w3-butt on">Dissert</a>
-                            <a href=#contact class="w3-bar-item w3-button">Contact</a>
-                            <a href="menu.html" class="w3-bar-item w3-button">Menu</a>
-                        </div>
-            </div>
-        </div>
-    </header>
-    <div class="w3-content" style="max-width:1100px">
-    </div>
-
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </html>
