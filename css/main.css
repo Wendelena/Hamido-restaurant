@@ -2,14 +2,24 @@ body {
     font-family: "Times New Roman", Georgia, serif;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: "Playfair Display", serif;
-    letter-spacing: 5px;
+}
+
+h1 {
+    display: inline;
+}
+
+nav {
+    font-size: large;
+}
+
+.navbar-right {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%)
 }
 
 
