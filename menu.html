@@ -7,14 +7,20 @@
     <title>Menu - Hamido</title>
 
     <meta name="description" content="Menu">
-    <meta name="author" content="Hamido Restaurant">
+    <meta name="author" content="Hamido">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="js/menu.min.js"></script>
 
 </head>
 
@@ -23,18 +29,23 @@
 <header class="w3-top">
     <div class="w3-bar w3-white w3-padding w3-card">
         <h1>
-            <a href="home.html" id="page-title" class="w3-button navbar-heading">Hamido</a>
+            <a href="index.html" id="page-title" class="w3-button navbar-heading">Hamido</a>
         </h1>
         <!-- Right-sided navbar links. Hide them on small screens -->
         <nav class="navbar-right">
-            <a href="#about" class="w3-button w3-hide-small navbar-button">About</a>
-            <a href="#contact" class="w3-button w3-hide-small navbar-button">Contact</a>
-            <div class="w3-dropdown-hover w3-hide-medium w3-hide-large">
+            <a href="#appetizers" class="w3-button w3-hide-medium w3-hide-small navbar-button">Appetizers</a>
+            <a href="#entrees" class="w3-button w3-hide-medium w3-hide-small navbar-button">Entrees</a>
+            <a href="#sandwiches" class="w3-button w3-hide-medium w3-hide-small navbar-button">Sandwiches</a>
+            <a href="#proteins" class="w3-button w3-hide-medium w3-hide-small navbar-button">Proteins</a>
+            <a href="#others" class="w3-button w3-hide-medium w3-hide-small navbar-button">Others</a>
+            <div class="w3-dropdown-hover w3-hide-large">
                 <button class="w3-button navbar-button">&#9776;</button>
                 <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <a href="#" class="w3-bar-item w3-button">Link 1</a>
-                    <a href="#" class="w3-bar-item w3-button">Link 2</a>
-                    <a href="#" class="w3-bar-item w3-button">Link 3</a>
+                    <a href="#appetizers" class="w3-bar-item w3-button">Appetizers</a>
+                    <a href="#entrees" class="w3-bar-item w3-button">Entrees</a>
+                    <a href="#sandwiches" class="w3-bar-item w3-button">Sandwiches</a>
+                    <a href="#proteins" class="w3-bar-item w3-button">Proteins</a>
+                    <a href="#others" class="w3-bar-item w3-button">Others</a>
                 </div>
             </div>
             <a href="menu.html" class="w3-button navbar-button">Menu</a>
@@ -51,46 +62,141 @@
 <!--</div>-->
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+<section id="content" class="w3-main w3-padding w3-content content-width">
 
-    <!-- First Photo Grid-->
-    <div class="w3-row-padding w3-padding-16 w3-center" id="food">
-        <div class="w3-col l3 m4 s4">
-            <img src="img/salmon.jpg" alt="Sandwich" style="width:100%">
-            <h3>The Perfect Sandwich, A Real NYC Classic</h3>
-            <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+    <!-- Appetizers -->
+    <section class="w3-row w3-row-padding w3-padding-32 w3-center food-sec" id="appetizers">
+        <div class="w3-col l3 m4 s12 card-photo">
+            <img id="carousel-appetizers" class="carousel" src="img/menuphoto/carousel-appetizers-1.jpg"
+                 alt="Appetizers photo carousel">
         </div>
-        <div class="w3-col l3 m4 s4">
-            <img src="img/salmon.jpg" alt="Steak" style="width:100%">
-            <h3>Let Me Tell You About This Steak</h3>
-            <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        <div class="w3-col l8 m7 s12 w3-left-align card-menu">
+            <div class="food-sub-sec">
+                <h2>Chicken</h2>
+                <hr>
+                <div class="dish"><h3>Chicken Melt</h3> <p>7.49</p></div>
+                <div class="dish"><h3>Fried Chicken Wings</h3> <p>6.49 (6 Pieces)</p> <p>11.99 (12 Pieces)</p></div>
+                <div class="dish"><h3>Fried Chicken Tenders</h3> <p>7.49 (6 Pieces)</p> <p>12.99 (12 Pieces)</p></div>
+            </div>
+            <div class="food-sub-sec">
+                <h2>Burgers</h2>
+                <hr>
+                <div class="dish"><h3>Hamburger</h3> <p>5.99</p></div>
+                <div class="dish"><h3>Cheese Burger</h3> <p>6.49</p></div>
+            </div>
         </div>
-        <div class="w3-col l3 m4 s4">
-            <img src="img/salmon.jpg" alt="Cherries" style="width:100%">
-            <h3>Cherries, interrupted</h3>
-            <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-            <p>What else?</p>
-        </div>
-    </div>
+    </section>
 
-    <!-- Second Photo Grid-->
-    <div class="w3-row-padding w3-padding-16 w3-center">
-        <div class="w3-col l3 m4 s4">
-            <img src="img/salmon.jpg" alt="Popsicle" style="width:100%">
-            <h3>All I Need Is a Popsicle</h3>
-            <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+    <!-- Entrees -->
+    <section class="w3-row w3-row-padding w3-padding-32 w3-center food-sec" id="entrees">
+        <div class="w3-col l3 m4 s12 card-photo">
+            <img id="carousel-entrees" class="carousel" src="img/menuphoto/carousel-entrees-1.jpg"
+                 alt="Entrees photo carousel">
         </div>
-        <div class="w3-col l3 m4 s4">
-            <img src="img/salmon.jpg" alt="Salmon" style="width:100%">
-            <h3>Salmon For Your Skin</h3>
-            <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        <div class="w3-col l8 m7 s12 w3-left-align card-menu">
+            <div class="food-sub-sec">
+                <h2>Chicken</h2>
+                <hr>
+                <div class="dish"><h3>Chicken Melt</h3> <p>7.49</p></div>
+                <div class="dish"><h3>Fried Chicken Wings</h3> <p>6.49 (6 Pieces)</p> <p>11.99 (12 Pieces)</p></div>
+                <div class="dish"><h3>Fried Chicken Tenders</h3> <p>7.49 (6 Pieces)</p> <p>12.99 (12 Pieces)</p></div>
+            </div>
+            <div class="food-sub-sec">
+                <h2>Burgers</h2>
+                <hr>
+                <div class="dish"><h3>Hamburger</h3> <p>5.99</p></div>
+                <div class="dish"><h3>Cheese Burger</h3> <p>6.49</p></div>
+            </div>
         </div>
-        <div class="w3-col l3 m4 s4">
-            <img src="img/salmon.jpg" alt="Sandwich" style="width:100%">
-            <h3>The Perfect Sandwich, A Real Classic</h3>
-            <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+    </section>
+
+    <!-- Sandwiches -->
+    <section class="w3-row w3-row-padding w3-padding-32 w3-center food-sec" id="sandwiches">
+        <div class="w3-col l3 m4 s12 card-photo">
+            <img id="carousel-sandwiches" class="carousel" src="img/menuphoto/carousel-sandwiches-1.jpg"
+                 alt="Sandwiches photo carousel">
         </div>
-    </div>
+        <div class="w3-col l8 m7 s12 w3-left-align card-menu">
+            <div class="food-sub-sec">
+                <h2>Chicken</h2>
+                <hr>
+                <div class="dish"><h3>Chicken Melt</h3> <p>7.49</p></div>
+                <div class="dish"><h3>Fried Chicken Wings</h3> <p>6.49 (6 Pieces)</p> <p>11.99 (12 Pieces)</p></div>
+                <div class="dish"><h3>Fried Chicken Tenders</h3> <p>7.49 (6 Pieces)</p> <p>12.99 (12 Pieces)</p></div>
+            </div>
+            <div class="food-sub-sec">
+                <h2>Burgers</h2>
+                <hr>
+                <div class="dish"><h3>Hamburger</h3> <p>5.99</p></div>
+                <div class="dish"><h3>Cheese Burger</h3> <p>6.49</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proteins -->
+    <section class="w3-row w3-row-padding w3-padding-32 w3-center food-sec" id="proteins">
+        <div class="w3-col l3 m4 s12 card-photo">
+            <img id="carousel-proteins" class="carousel" src="img/menuphoto/carousel-proteins-1.jpg"
+                 alt="Proteins photo carousel">
+        </div>
+        <div class="w3-col l8 m7 s12 w3-left-align card-menu">
+            <div class="food-sub-sec">
+                <h2>Chicken</h2>
+                <hr>
+                <div class="dish"><h3>Chicken Melt</h3> <p>7.49</p></div>
+                <div class="dish"><h3>Fried Chicken Wings</h3> <p>6.49 (6 Pieces)</p> <p>11.99 (12 Pieces)</p></div>
+                <div class="dish"><h3>Fried Chicken Tenders</h3> <p>7.49 (6 Pieces)</p> <p>12.99 (12 Pieces)</p></div>
+            </div>
+            <div class="food-sub-sec">
+                <h2>Burgers</h2>
+                <hr>
+                <div class="dish"><h3>Hamburger</h3> <p>5.99</p></div>
+                <div class="dish"><h3>Cheese Burger</h3> <p>6.49</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Others -->
+    <section class="w3-row w3-row-padding w3-padding-32 w3-center food-sec" id="others">
+        <div class="w3-col l3 m4 s12 card-photo">
+            <img id="carousel-others" class="carousel" src="img/menuphoto/carousel-others-1.jpg"
+                 alt="Others photo carousel">
+        </div>
+        <div class="w3-col l8 m7 s12 w3-left-align card-menu">
+            <div class="food-sub-sec">
+                <h2>Chicken</h2>
+                <hr>
+                <div class="dish"><h3>Chicken Melt</h3> <p>7.49</p></div>
+                <div class="dish"><h3>Fried Chicken Wings</h3> <p>6.49 (6 Pieces)</p> <p>11.99 (12 Pieces)</p></div>
+                <div class="dish"><h3>Fried Chicken Tenders</h3> <p>7.49 (6 Pieces)</p> <p>12.99 (12 Pieces)</p></div>
+            </div>
+            <div class="food-sub-sec">
+                <h2>Burgers</h2>
+                <hr>
+                <div class="dish"><h3>Hamburger</h3> <p>5.99</p></div>
+                <div class="dish"><h3>Cheese Burger</h3> <p>6.49</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!--&lt;!&ndash; Second Photo Grid&ndash;&gt;-->
+    <!--<section class="w3-row-padding w3-padding-16 w3-center food-sec" id="others">-->
+        <!--<div class="w3-col l3 m4 s4">-->
+            <!--<img src="img/salmon.jpg" alt="Popsicle" style="width:100%">-->
+            <!--<h3>All I Need Is a Popsicle</h3>-->
+            <!--<p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>-->
+        <!--</div>-->
+        <!--<div class="w3-col l3 m4 s4">-->
+            <!--<img src="img/salmon.jpg" alt="Salmon" style="width:100%">-->
+            <!--<h3>Salmon For Your Skin</h3>-->
+            <!--<p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>-->
+        <!--</div>-->
+        <!--<div class="w3-col l3 m4 s4">-->
+            <!--<img src="img/salmon.jpg" alt="Sandwich" style="width:100%">-->
+            <!--<h3>The Perfect Sandwich, A Real Classic</h3>-->
+            <!--<p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>-->
+        <!--</div>-->
+    <!--</section>-->
 
     <!-- Pagination -->
     <div class="w3-center w3-padding-32">
@@ -106,8 +212,12 @@
 
     <hr>
 
-    <!-- Footer -->
-    <footer class="w3-row-padding w3-padding-32">
+</section>
+<!-- End page content -->
+
+<!-- Footer -->
+<footer class="w3-row-padding w3-padding-32 w3-main w3-padding w3-content content-width">
+    <section class="w3-row-padding w3-padding-16" id="footer">
         <div class="w3-third">
             <h3>FOOTER</h3>
             <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
@@ -140,10 +250,8 @@
                 <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Fish</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Duck</span>
             </p>
         </div>
-    </footer>
-
-    <!-- End page content -->
-</div>
+    </section>
+</footer>
 
 </body>
 </html>
