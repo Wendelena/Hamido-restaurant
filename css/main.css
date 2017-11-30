@@ -2,13 +2,12 @@ body {
     font-family: "Times New Roman", Georgia, serif;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: "Playfair Display", serif;
+}
+
+.content-width {
+    max-width:1200px;
 }
 
 h1 {
@@ -41,6 +40,10 @@ nav {
 .navbar-button {
     padding: 8px;
     display: inline-block;
+}
+
+.food-section {
+    margin-top: 100px;
 }
 
 

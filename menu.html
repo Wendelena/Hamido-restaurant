@@ -23,18 +23,19 @@
 <header class="w3-top">
     <div class="w3-bar w3-white w3-padding w3-card">
         <h1>
-            <a href="home.html" id="page-title" class="w3-button navbar-heading">Hamido</a>
+            <a href="index.html" id="page-title" class="w3-button navbar-heading">Hamido</a>
         </h1>
         <!-- Right-sided navbar links. Hide them on small screens -->
         <nav class="navbar-right">
-            <a href="#about" class="w3-button w3-hide-small navbar-button">About</a>
-            <a href="#contact" class="w3-button w3-hide-small navbar-button">Contact</a>
+            <a href="#appetizers" class="w3-button w3-hide-small navbar-button">Appetizers</a>
+            <a href="#entrees" class="w3-button w3-hide-small navbar-button">Entrees</a>
+            <a href="#desserts" class="w3-button w3-hide-small navbar-button">Desserts</a>
             <div class="w3-dropdown-hover w3-hide-medium w3-hide-large">
                 <button class="w3-button navbar-button">&#9776;</button>
                 <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <a href="#" class="w3-bar-item w3-button">Link 1</a>
-                    <a href="#" class="w3-bar-item w3-button">Link 2</a>
-                    <a href="#" class="w3-bar-item w3-button">Link 3</a>
+                    <a href="#appetizers" class="w3-bar-item w3-button">Appetizers</a>
+                    <a href="#entrees" class="w3-bar-item w3-button">Entrees</a>
+                    <a href="#desserts" class="w3-bar-item w3-button">Desserts</a>
                 </div>
             </div>
             <a href="menu.html" class="w3-button navbar-button">Menu</a>
@@ -51,10 +52,10 @@
 <!--</div>-->
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+<section id="content" class="w3-main w3-padding w3-content content-width">
 
     <!-- First Photo Grid-->
-    <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+    <section class="w3-row-padding w3-padding-16 w3-center food-section" id="appetizers">
         <div class="w3-col l3 m4 s4">
             <img src="img/salmon.jpg" alt="Sandwich" style="width:100%">
             <h3>The Perfect Sandwich, A Real NYC Classic</h3>
@@ -71,10 +72,10 @@
             <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
             <p>What else?</p>
         </div>
-    </div>
+    </section>
 
     <!-- Second Photo Grid-->
-    <div class="w3-row-padding w3-padding-16 w3-center">
+    <section class="w3-row-padding w3-padding-16 w3-center" id="entrees">
         <div class="w3-col l3 m4 s4">
             <img src="img/salmon.jpg" alt="Popsicle" style="width:100%">
             <h3>All I Need Is a Popsicle</h3>
@@ -90,7 +91,26 @@
             <h3>The Perfect Sandwich, A Real Classic</h3>
             <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
         </div>
-    </div>
+    </section>
+
+    <!-- Second Photo Grid-->
+    <section class="w3-row-padding w3-padding-16 w3-center" id="desserts">
+        <div class="w3-col l3 m4 s4">
+            <img src="img/salmon.jpg" alt="Popsicle" style="width:100%">
+            <h3>All I Need Is a Popsicle</h3>
+            <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="w3-col l3 m4 s4">
+            <img src="img/salmon.jpg" alt="Salmon" style="width:100%">
+            <h3>Salmon For Your Skin</h3>
+            <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="w3-col l3 m4 s4">
+            <img src="img/salmon.jpg" alt="Sandwich" style="width:100%">
+            <h3>The Perfect Sandwich, A Real Classic</h3>
+            <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+    </section>
 
     <!-- Pagination -->
     <div class="w3-center w3-padding-32">
@@ -106,8 +126,12 @@
 
     <hr>
 
-    <!-- Footer -->
-    <footer class="w3-row-padding w3-padding-32">
+</section>
+<!-- End page content -->
+
+<!-- Footer -->
+<footer class="w3-row-padding w3-padding-32 w3-main w3-padding w3-content content-width">
+    <section class="w3-row-padding w3-padding-16" id="footer">
         <div class="w3-third">
             <h3>FOOTER</h3>
             <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
@@ -140,10 +164,8 @@
                 <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Fish</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Duck</span>
             </p>
         </div>
-    </footer>
-
-    <!-- End page content -->
-</div>
+    </section>
+</footer>
 
 </body>
 </html>
