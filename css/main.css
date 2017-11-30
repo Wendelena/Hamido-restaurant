@@ -7,7 +7,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    display: inline;
+    display: inline-block;
+    margin: 0;
+}
+
+#page-title {
+    font-size: xx-large;
+    font-family: "Playfair Display", serif;
 }
 
 nav {
@@ -17,9 +23,19 @@ nav {
 .navbar-right {
     position: absolute;
     top: 50%;
-    right: 16px;
+    right: 24px;
     transform: translate(0%, -50%);
     -ms-transform: translate(0%, -50%)
+}
+
+.navbar-heading {
+    padding: 8px 16px;
+    display: inline-block;
+}
+
+.navbar-button {
+    padding: 8px;
+    display: inline-block;
 }
 
 
