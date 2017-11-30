@@ -50,7 +50,7 @@ https://startbootstrap.com/template-overviews/agency/
 History of lebanese cuisine (directly copied from Wikipedia):
 1：The Lebanese cuisine is an ancient one and part of the Levantine cuisine. Many dishes in the Lebanese cuisine can be traced back thousands of years to eras of Roman and Phoenician rule.
 2：From 1516 to 1918, the Ottoman Turks controlled Lebanon and introduced a variety of foods that have become staples in the Lebanese diet, such as cooking with lamb.
-3：After the Ottomans were defeated in World War I (1914–1918), France took control of Lebanon until 1943. The French introduced foods such as flan, a caramel custard dessert dating back to the 16th century AD, and croissants.
+3：1918-1943 After the Ottomans were defeated in World War I (1914–1918), France took control of Lebanon until 1943. The French introduced foods such as flan, a caramel custard dessert dating back to the 16th century AD, and croissants.
 4：More and more foods have been introduced...
 
 
