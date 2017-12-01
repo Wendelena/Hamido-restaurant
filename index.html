@@ -91,17 +91,19 @@
         <!-- Contact Section -->
         <div class="w3-container w3-padding-64 " id="contact">
             <h1>Contact</h1><br>
+            <table id="table"></table>
+            
             <div class="w3-col m6 w3-padding-large w3-hide-small ">
 
                 <div id="map" style="width:100%;height:400px; "></div>
             </div>
             <div class="w3-col m6 w3-padding-large ">
-                <h3>Dearnorn</h3><br>
-                <p class="w3-large w3-text-grey ">Tel: (313) 582-0660</p>
+                <h3>Dearborn</h3><br>
+                <p class="w3-large w3-text-grey" id="phone1">Tel: (313) 582-0660</p>
                 <p class="w3-large w3-text-grey ">13701 West Warren<br> Ave Dearborn, MI 48126</p><br>
 
                 <h3>Dearborn Heights</h3><br>
-                <p class="w3-large w3-text-grey ">Tel: (313) 562-8888</p>
+                <p class="w3-large w3-text-grey">Tel: (313) 562-8888</p>
                 <p class="w3-large w3-text-grey ">25412 Ford Rd Dearborn Heights<br> MI 48127</p>
             </div>
 
@@ -157,5 +159,42 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2N-A4MJzjs0W5xAj8PxrA7u8MnDxeG84&callback=myMap "></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js "></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js "></script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        url: "data.txt",
+        dataType: "text",
+        success: function(data) {processData(data);}
+     });
+});
 
+function processData(allText) {
+    var allTextLines = allText.split(/\r\n|\n/);
+    var headers = allTextLines[0].split(',');
+    var lines = [];
+
+    for (var i=1; i<allTextLines.length; i++) {
+        var data = allTextLines[i].split(',');
+        if (data.length == headers.length) {
+
+            var tarr = [];
+            for (var j=0; j<headers.length; j++) {
+                tarr.push(headers[j]+":"+data[j]);
+            }
+            lines.push(tarr);
+        }
+    }
+    lines.forEach(function(items) {
+ var row = document.createElement("tr");
+ items.forEach(function(item) {
+   var cell = document.createElement("td");
+   cell.textContent = item;
+   row.appendChild(cell);
+ });
+ table.appendChild(row);
+});
+
+}
+</script>
 </html>
