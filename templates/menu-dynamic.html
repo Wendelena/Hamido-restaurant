@@ -16,13 +16,17 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- Site styling -->
     <link rel="stylesheet" href="static/css/main.min.css">
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
 
+{% block include %}
     <script src="static/js/menu.min.js"></script>
+{% endblock %}
 
 </head>
 
@@ -31,12 +35,17 @@
 <header class="w3-top">
     <div class="w3-bar w3-deep-orange w3-padding w3-card">
         <h1>
-            <a href="index.html" id="page-title" class="w3-button navbar-heading">Hamido</a>
-            <p>MENU</p>
+            <a href="index.html" id="page-title"
+               class="w3-button navbar-heading">Hamido</a>
+            <i>MENU</i>
         </h1>
-        <!-- Right-sided navbar links. Hide them on small screens -->
+        <!-- Right-sided navbar links -->
+{% block nav-bar %}
         <nav class="navbar-right">
-            <a href="index.html" class="w3-button navbar-button">Back Home</a>
+            <a href="index.html"
+               class="w3-button navbar-button">Back Home
+            </a>
+{% endblock %}
         </nav>
     </div>
 </header>
