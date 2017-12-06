@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Menu - Hamido</title>
+
+    <meta name="description" content="Menu">
+    <meta name="author" content="Hamido">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Site styling -->
+    <link rel="stylesheet" href="static/css/main.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
+{% block include %}
+    <script src="static/js/menu.min.js"></script>
+{% endblock %}
+
+</head>
+
+<body>
+
+<header class="w3-top">
+    <div class="w3-bar w3-deep-orange w3-padding w3-card">
+        <h1>
+            <a href="index.html" id="page-title"
+               class="w3-button navbar-heading">Hamido</a>
+            <i>MENU</i>
+        </h1>
+        <!-- Right-sided navbar links -->
+{% block nav-bar %}
+        <nav class="navbar-right">
+            <a href="index.html"
+               class="w3-button navbar-button">Back Home
+            </a>
+{% endblock %}
+        </nav>
+    </div>
+</header>
+
+<!-- !PAGE CONTENT! -->
+<div id="content-start" class="container pad-below">
+
+    <!-- Appetizers -->
+    <section class="w3-row w3-row-padding content-block" id="appetizers">
+        <h2>Appetizers</h2>
+        <hr>
+        <div id="carousel-appetizers" class="w3-col l4 m4 s12 card-photo carousel"
+             title="Appetizers photo carousel" style="background-image: url('static/img/menuphoto/carousel-appetizers-1.jpg');">
+        </div>
+        <div class="card-menu">
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Falafel</h3> <br> <p>7.99 (Dozen)</p> <p>4.99 (1/2 Dozen)</p></div>
+                <div class="dish"><h3>Hommous</h3> <br> <p>3.99 (S)</p> <p>5.99 (M)</p> <p>8.99 (L)</p></div>
+                <div class="dish"><h3>Baba Ghanouj</h3> <br> <p>3.99 (S)</p> <p>5.99 (M)</p> <p>8.99 (L)</p></div>
+                <div class="dish"><h3>Rice with Meat</h3> <br> <p>2.99 (S)</p> <p>4.99 (M)</p> <p>5.99 (L)</p></div>
+            </div>
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>French Fries</h3> <br> <p>2.99 (S)</p> <p>4.99 (M)</p> <p>5.99 (L)</p></div>
+                <div class="dish"><h3>Curly Fries</h3> <br> <p>2.99 (S)</p> <p>4.99 (M)</p> <p>5.99 (L)</p></div>
+                <div class="dish"><h3>Onion Rings</h3> <br> <p>2.99 (S)</p> <p>4.99 (M)</p> <p>5.99 (L)</p></div>
+                <div class="dish"><h3>Fried Shrimp</h3> <br> <p>12.99</p></div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<div class="container pad-below">
+
+    <!-- Entrees -->
+    <section class="w3-row w3-row-padding content-block" id="entrees">
+        <h2>Entrees</h2>
+        <hr>
+        <div id="carousel-entrees" class="w3-col l4 m4 s12 card-photo carousel"
+             title="Entrees photo carousel" style="background-image: url('static/img/menuphoto/carousel-entrees-1.jpg');">
+        </div>
+        <div class="card-menu">
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Boneless Breast</h3> <br> <p>12.99</p></div>
+                <div class="dish"><h3>Chicken Shawarma</h3> <br> <p>14.99</p></div>
+                <div class="dish"><h3>Meat Shawarma</h3> <br> <p>14.99</p></div>
+                <div class="dish"><h3>Shawarma Combo</h3> <br> <p>15.99</p></div>
+                <div class="dish"><h3>Shish Combo</h3> <br> <p>15.99</p></div>
+            </div>
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Hamido's Home Steak</h3> <br> <p>15.99</p></div>
+                <div class="dish"><h3>Lamb Chops</h3> <br> <p>15.99</p></div>
+                <div class="dish"><h3>Shish Tawook</h3> <br> <p>12.99</p></div>
+                <div class="dish"><h3>Shish Kabab</h3> <br> <p>12.99</p></div>
+                <div class="dish"><h3>Shish Kafta</h3> <br> <p>12.99</p></div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="container pad-below">
+
+    <!-- Sandwiches -->
+    <section class="w3-row w3-row-padding content-block" id="sandwiches">
+        <h2>Sandwiches</h2>
+        <hr>
+        <div id="carousel-sandwiches" class="w3-col l4 m4 s12 card-photo carousel"
+             title="Sandwiches photo carousel" style="background-image: url('static/img/menuphoto/carousel-sandwiches-1.jpg');">
+        </div>
+        <div class="card-menu">
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Chicken Shawarma</h3> <br> <p>3.99</p></div>
+                <div class="dish"><h3>Meat Shawarma</h3> <br> <p>3.99</p></div>
+                <div class="dish"><h3>Shish Kabab</h3> <br> <p>4.29</p></div>
+                <div class="dish"><h3>Falafel</h3> <br> <p>3.99</p></div>
+                <div class="dish"><h3>Shish Tawook</h3> <br> <p>4.29</p></div>
+            </div>
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Shish Kafta</h3> <br> <p>4.29</p></div>
+                <div class="dish"><h3>Chicken</h3> <br> <p>4.29</p></div>
+                <div class="dish"><h3>Gyro</h3> <br> <p>4.29</p></div>
+                <div class="dish"><h3>Markouk</h3> <br> <p>5.99</p></div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="container pad-below">
+
+    <!-- Subs -->
+    <section class="w3-row w3-row-padding content-block" id="subs">
+        <h2>Subs</h2>
+        <hr>
+        <div id="carousel-subs" class="w3-col l4 m4 s12 card-photo carousel"
+             title="Subs photo carousel" style="background-image: url('static/img/menuphoto/carousel-subs-1.jpg');">
+        </div>
+        <div class="card-menu">
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Steak</h3> <br> <p>5.49 (8")</p> <p>7.49 (12")</p></div>
+                <div class="dish"><h3>Turkey</h3> <br> <p>5.49 (8")</p> <p>7.49 (12")</p></div>
+                <div class="dish"><h3>Tuna</h3> <br> <p>5.49 (8")</p> <p>7.49 (12")</p></div>
+                <div class="dish"><h3>Chicken</h3> <br> <p>5.49 (8")</p> <p>7.49 (12")</p></div>
+                <div class="dish"><h3>Veggie</h3> <br> <p>5.49 (8")</p> <p>7.49 (12")</p></div>
+            </div>
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Fries</h3> <br> <p>5.49 (8")</p> <p>7.49 (12")</p></div>
+                <div class="dish"><h3>Escalope</h3> <br> <p>5.49 (8")</p> <p>7.49 (12")</p></div>
+                <div class="dish"><h3>Sojok</h3> <br> <p>5.49 (8")</p> <p>7.49 (12")</p></div>
+                <div class="dish"><h3>Makanlk</h3> <br> <p>5.49 (8")</p> <p>7.49 (12")</p></div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="container pad-below">
+
+    <!-- Breakfast Salads -->
+    <section class="w3-row w3-row-padding content-block" id="breakfast-salads">
+        <h2>Breakfast &amp; Salads</h2>
+        <hr>
+        <div id="carousel-breakfast-salads" class="w3-col l4 m4 s12 card-photo carousel"
+             title="Breakfast and Salads photo carousel" style="background-image: url('static/img/menuphoto/carousel-breakfast-salads-1.jpg');">
+        </div>
+        <div class="card-menu">
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Chicken Soup</h3> <br> <p>2.49</p></div>
+                <div class="dish"><h3>Lentll Soup</h3> <br> <p>2.49</p></div>
+                <div class="dish"><h3>Fava Beans</h3> <br> <p>5.99</p></div>
+                <div class="dish"><h3>Fried Eggs</h3> <br> <p>5.99</p></div>
+                <div class="dish"><h3>Eggs with Meat</h3> <br> <p>8.99</p></div>
+            </div>
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Fattoush</h3> <br> <p>3.99 (S)</p> <p>5.99 (M)</p> <p>8.99 (L)</p></div>
+                <div class="dish"><h3>Tabbouli</h3> <br> <p>3.99 (S)</p> <p>5.99 (M)</p> <p>8.99 (L)</p></div>
+                <div class="dish"><h3>Shawarma Salad</h3> <br> <p>5.99 (S)</p> <p>8.99 (M)</p> <p>13.99 (L)</p></div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="container pad-below">
+
+    <!-- Burgers Quesadillas -->
+    <section class="w3-row w3-row-padding content-block" id="burgers-quesadillas">
+        <h2>Burgers &amp; Quesadillas</h2>
+        <hr>
+        <div id="carousel-burgers-quesadillas" class="w3-col l4 m4 s12 card-photo carousel"
+             title="Burgers and Quesadillas photo carousel" style="background-image: url('static/img/menuphoto/carousel-burgers-quesadillas-1.jpg');">
+        </div>
+        <div class="card-menu">
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Fish Burger</h3> <br> <p>5.99</p></div>
+                <div class="dish"><h3>Hamburger</h3> <br> <p>5.99</p></div>
+                <div class="dish"><h3>Cheese Burger</h3> <br> <p>6.49</p></div>
+                <div class="dish"><h3>Chicken Burger</h3> <br> <p>6.49</p></div>
+                <div class="dish"><h3>Mushroom/Swiss Burger</h3> <br> <p>6.49</p></div>
+            </div>
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Chicken Quesadillas</h3> <br> <p>8.99</p></div>
+                <div class="dish"><h3>Steak Quesadillas</h3> <br> <p>8.99</p></div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="container pad-below">
+
+    <!-- Chicken -->
+    <section class="w3-row w3-row-padding content-block" id="chicken">
+        <h2>Chicken</h2>
+        <hr>
+        <div id="carousel-chicken" class="w3-col l4 m4 s12 card-photo carousel"
+             title="Chicken photo carousel" style="background-image: url('static/img/menuphoto/carousel-chicken-1.jpg');">
+        </div>
+        <div class="card-menu">
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Whole Chicken</h3> <br> <p>14.99</p></div>
+                <div class="dish"><h3>Half Chicken</h3> <br> <p>9.99</p></div>
+                <div class="dish"><h3>Boneless Chicken</h3> <br> <p>16.99</p></div>
+                <div class="dish"><h3>Half Boneless Chicken</h3> <br> <p>12.99</p></div>
+            </div>
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Wings</h3> <br> <p>6.49 (6 Pieces)</p> <p>11.99 (12 Pieces)</p></div>
+                <div class="dish"><h3>Tenders</h3> <br> <p>7.49 (6 Pieces)</p> <p>12.99 (12 Pieces)</p></div>
+                <div class="dish"><h3>Fried Chicken</h3> <br> <p>16.99</p></div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="container pad-below">
+
+    <!-- Desserts -->
+    <section class="w3-row w3-row-padding content-block" id="desserts">
+        <h2>Desserts</h2>
+        <hr>
+        <div id="carousel-desserts" class="w3-col l4 m4 s12 card-photo carousel"
+             title="Desserts photo carousel" style="background-image: url('static/img/menuphoto/carousel-desserts-1.jpg');">
+        </div>
+        <div class="card-menu">
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Cheese Cake</h3> <br> <p>2.49</p></div>
+                <div class="dish"><h3>Rice Pudding</h3> <br> <p>2.49</p></div>
+                <div class="dish"><h3>Fresh Raw Carrot or Apple Juice</h3> <br> <p>3.99</p></div>
+                <div class="dish"><h3>Cocktail (Chunks or Blended)</h3> <br> <p>3.99</p></div>
+                <div class="dish"><h3>Fruit Cocktail</h3> <br> <p>3.99</p></div>
+                <div class="dish"><h3>Strawberry Mango Smoothies</h3> <br> <p>3.99</p></div>
+
+            </div>
+            <div class="food-sec w3-col l4 m4 s12">
+                <div class="dish"><h3>Strawberry Smoothies</h3> <br> <p>3.99</p></div>
+                <div class="dish"><h3>Mango Smoothies</h3> <br> <p>3.99</p></div>
+                <div class="dish"><h3>Guava Smoothies</h3> <br> <p>3.99</p></div>
+                <div class="dish"><h3>Orange Smoothies</h3> <br> <p>3.99</p></div>
+                <div class="dish"><h3>Strawberry Banana Smoothies</h3> <br> <p>3.99</p></div>
+                <div class="dish"><h3>Guava Banana Smoothies</h3> <br> <p>3.99</p></div>
+            </div>
+        </div>
+    </section>
+
+</div>
+<!-- End page content -->
+
+<div class="content-block">
+    <hr>
+</div>
+
+<!-- Footer -->
+<div class="content-block footer">
+<footer>
+    <div>
+        <p class="copyright">Designed by Hi &copy; 2017</p>
+    </div>
+    <div class="w3-right social">
+        <a class="w3-right" href="https://www.facebook.com/Hamido-Restaurant-258023407567621/"><i class="fa-facebook fa w3-xxlarge" ></i></a>
+        <p class="w3-right" style="display:inline-block">&nbsp</p>
+        <a class="w3-right" href="https://www.yelp.com/biz/hamido-dearborn"><i class="fa-yelp fa w3-xxlarge" ></i></a>
+    </div>
+</footer>
+</div>
+</body>
+
+</html>
