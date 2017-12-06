@@ -18,12 +18,10 @@
 import logging
 
 from flask import Flask, render_template
-from flask_script import Manager
+
 
 # Set up application
 app = Flask(__name__)
-
-manager = Manager(app)
 
 
 @app.route('/')
@@ -51,8 +49,3 @@ def server_error(err):
     logging.exception('An error occurred during a request.')
     return 'An internal error occurred.', 500
 # [END app]
-
-
-if __name__ == '__main__':
-    # Runs the flask server in a special way that makes it nice to debug
-    manager.run()
