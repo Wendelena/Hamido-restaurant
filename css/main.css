@@ -15,6 +15,10 @@ h1 {
     margin: 0;
 }
 
+h3 {
+    font-size: 18px;
+}
+
 #page-title {
     font-size: xx-large;
     font-family: "Playfair Display", serif;
@@ -49,6 +53,7 @@ nav {
 .carousel {
     width: 100%;
     max-width: 350px;
+    max-height: 700px;
 }
 
 .card-menu {
@@ -92,6 +97,10 @@ nav {
 
 .food-sub-sec {
     margin-bottom: 32px;
+}
+
+.dish {
+    margin-bottom: 4px;
 }
 
 .dish * {
