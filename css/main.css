@@ -20,6 +20,15 @@ h1 {
     margin: 0;
 }
 
+h1 p {
+    display: inline-block;
+    color: black;
+    font-size: large;
+    margin: 0;
+    transform: translate(0, 2px);
+    -ms-transform: translate(0, 2px);
+}
+
 h3 {
     font-size: 18px;
 }
@@ -38,13 +47,16 @@ nav {
     top: 50%;
     right: 24px;
     transform: translate(0%, -50%);
-    -ms-transform: translate(0%, -50%)
+    -ms-transform: translate(0%, -50%);
 }
 
 .navbar-heading {
     padding: 8px 16px;
     display: inline-block;
+<<<<<<< HEAD
     color: white;
+=======
+>>>>>>> 77c9aa9c7ef7db6e23fe5d53648bf5e41804009c
 }
 
 .navbar-button {
