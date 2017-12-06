@@ -63,7 +63,7 @@ def main():
                               discoveryServiceUrl=discoveryUrl)
 
     spreadsheetId = '1Y9U6GlDPvZYDHeltPQV-M9GhFENL7f2TvBncMByKIno'
-    rangeName = 'menu!A2:D'
+    rangeName = 'menu!A2:G'
     result = service.spreadsheets().values().get(
         spreadsheetId=spreadsheetId, range=rangeName).execute()
     values = result.get('values', [])
