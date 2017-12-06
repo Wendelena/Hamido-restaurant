@@ -1,0 +1,24 @@
+application: hamido-restaurant
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /static
+  static_dir: static
+- url: /img
+  static_dir: static/img
+- url: /css
+  static_dir: static/img
+- url: /js
+  static_dir: static/js
+
+- url: /.*
+  script: main.app
+
+libraries:
+- name: flask
+  version: latest
+- name: flask_script
+  version: latest
