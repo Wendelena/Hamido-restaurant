@@ -22,7 +22,7 @@ $(function () {
         $(".carousel").each(function () {
             var x = $(this);
             x.fadeOut(1000, function () {
-                x.css('background-image', 'url(img/menuphoto/' + x.attr('id') + '-' + (slideIndex + 1) + '.jpg)');
+                x.css('background-image', 'url(static/img/menuphoto/' + x.attr('id') + '-' + (slideIndex + 1) + '.jpg)');
                 x.fadeIn(1000, false);
             });
         });
