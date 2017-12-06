@@ -20,6 +20,15 @@ h1 {
     margin: 0;
 }
 
+h1 p {
+    display: inline-block;
+    color: black;
+    font-size: large;
+    margin: 0;
+    transform: translate(0, 2px);
+    -ms-transform: translate(0, 2px);
+}
+
 h3 {
     font-size: 18px;
 }
@@ -38,7 +47,7 @@ nav {
     top: 50%;
     right: 24px;
     transform: translate(0%, -50%);
-    -ms-transform: translate(0%, -50%)
+    -ms-transform: translate(0%, -50%);
 }
 
 .navbar-heading {
