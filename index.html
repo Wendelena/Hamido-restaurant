@@ -14,7 +14,6 @@
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
-
     <link rel="stylesheet" href="css/main.min.css">
 
 </head>
@@ -22,14 +21,14 @@
 <body>
 
     <header class="w3-top">
-        <div class="w3-bar w3-white w3-padding w3-card">
+        <div class="w3-bar w3-deep-orange w3-padding w3-card">
             <h1>
                 <a href="index.html" id="page-title" class="w3-button navbar-heading">Hamido</a>
             </h1>
             <!-- Right-sided navbar links. Hide them on small screens -->
             <nav class="navbar-right">
                 <a href="#about" class="w3-button w3-hide-small navbar-button">About</a>
-                <a href="#contact" class="w3-button w3-hide-small navbar-button">Contact</a>
+                <a href="#contact" class="w3-button w3-hide-small navbar-button">Contact us</a>
                 <div class="w3-dropdown-hover w3-hide-medium w3-hide-large">
                     <button class="w3-button navbar-button">&#9776;</button>
                     <div class="w3-dropdown-content w3-bar-block w3-card-4">
@@ -37,7 +36,7 @@
                         <a href="#contact" class="w3-bar-item w3-button">Contact</a>
                     </div>
                 </div>
-                <a href="menu.html" class="w3-button navbar-button">Menu</a>
+                <a href="menu.html" class="w3-button navbar-button">MENU</a>
             </nav>
         </div>
     </header>
@@ -52,8 +51,10 @@
     </header>
 
     <div class="w3-content" style="max-width:1100px">
-
-
+        <div class="w3-center">
+            <h1>About&nbsp</h1>
+            <h1 style="color:orangered"> Us</h1><br>
+        </div>
         <!--timeline-->
         <section class="timeline" id="about">
             <ul>
@@ -97,34 +98,37 @@
         <hr>
         <!-- Contact Section -->
         <div class="w3-container w3-padding-64 " id="contact">
-            <h1>Contact</h1><br>
-            <table id="table"></table>
+            <div class="w3-center">
+                <h1>Contact&nbsp</h1>
+                <h1 style="color:orangered"> Us</h1><br>
+                <table id="table"></table>
 
-            <div class="w3-col m6 w3-padding-large w3-hide-small ">
-                <div id="map" style="width:100%;height:400px; "></div>
-            </div>
-            <div class="w3-col m6 w3-padding-large">
-                <h3>Dearnorn</h3>
-                <p class="w3-large w3-text-grey ">Tel: (313) 582-0660</p>
-                <p class="w3-large w3-text-grey ">13701 West Warren<br> Ave Dearborn, MI 48126</p><br>
-
-                <h3>Dearborn Heights</h3>
-                <p class="w3-large w3-text-grey ">Tel: (313) 562-8888</p>
-                <p class="w3-large w3-text-grey ">25412 Ford Rd Dearborn Heights<br> MI 48127</p>
-            </div>
-            <div class="w3-container w3-padding-64 " id="form">
-
+                <div class="w3-col m6 w3-padding-large w3-hide-small ">
+                    <div id="map" style="width:100%;height:400px; "></div>
+                </div>
                 <div class="w3-col m6 w3-padding-large">
-                    <form action="/action_page.php " target="_blank ">
-                        <p><input class="w3-input w3-padding-16 " type="text " placeholder="Name " required name="Name "></p>
-                        <p><input class="w3-input w3-padding-16 " type="number " placeholder="How many people " required name="People "></p>
-                        <p><input class="w3-input w3-padding-16 " type="datetime-local " placeholder="Date and time " required name="date " value="2017-11-16T20:00 "></p>
-                        <p><input class="w3-input w3-padding-16 " type="text " placeholder="Message \ Special requirements " required name="Message "></p>
-                        <p><button class="w3-button w3-light-grey w3-section " type="submit ">SEND MESSAGE</button></p>
-                    </form>
+                    <h3>Dearborn</h3>
+                    <p class="w3-large w3-text-grey ">Tel: (313) 582-0660</p>
+                    <p class="w3-large w3-text-grey ">13701 West Warren<br> Ave Dearborn, MI 48126</p><br>
+
+                    <h3>Dearborn Heights</h3>
+                    <p class="w3-large w3-text-grey ">Tel: (313) 562-8888</p>
+                    <p class="w3-large w3-text-grey ">25412 Ford Rd Dearborn Heights<br> MI 48127</p>
+                </div>
+                <!--feedback section-->
+                <div class="w3-container w3-padding-64 " id="feedback">
+
+                    <div class="w3-col m6 w3-padding-large">
+                        <form action="/action_page.php " target="_blank ">
+                            <p><input class="w3-input w3-padding-16 " type="text " placeholder="Name " required name="Name "></p>
+                            <p><input class="w3-input w3-padding-16 " type="number " placeholder="How many people " required name="People "></p>
+                            <p><input class="w3-input w3-padding-16 " type="datetime-local " placeholder="Date and time " required name="date " value="2017-11-16T20:00 "></p>
+                            <p><input class="w3-input w3-padding-16 " type="text " placeholder="Message \ Special requirements " required name="Message "></p>
+                            <p><button class="w3-button w3-light-grey w3-section " type="submit ">SEND MESSAGE</button></p>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
 </body>
 <script>
     function myMap() {
