@@ -14,7 +14,8 @@
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -48,6 +49,7 @@
         <div class="w3-center">
             <h1>About&nbsp</h1>
             <h1 style="color:orangered"> Us</h1><br>
+            <h3> We are a Casual, Middle-eastern Lebanese restaurant</h3>
         </div>
         <!--timeline-->
         <section class="timeline" id="about">
@@ -111,13 +113,23 @@
 
                         <h3>Dearborn Heights</h3>
                         <p class="w3-large w3-text-grey ">Tel: (313) 562-8888</p>
-                        <p class="w3-large w3-text-grey ">25412 Ford Rd Dearborn Heights<br> MI 48127</p>
+                        <p class="w3-large w3-text-grey ">25412 Ford Rd Dearborn Heights<br> MI 48127</p><br>
+
                     </div>
         </section>
         <!--  Section -->
         <hr>
-        <div class="w3-container w3-padding-64 " id="contact">
-            <div class="w3-container w3-padding-64 " id="feedback">
+        <div class="w3-container w3-padding-64 " id="feedback">
+            <div class="w3-center">
+                <h1>Feedback to&nbsp</h1>
+                <h1 style="color:orangered"> Us</h1><br>
+                <div class="w3-container">
+                    <div class="w3-col m6 w3-padding-large">
+                        <div id='yelpwidget'></div>
+                    </div>
+
+
+                </div>
 
                 <div class="w3-col m6 w3-padding-large">
                     <form action="/action_page.php " target="_blank ">
@@ -130,6 +142,17 @@
                 </div>
             </div>
         </div>
+        <hr>
+        <footer>
+            <div class="w3-container w3-padding-16 " id="feedback">
+                <div class="w3-col m6 w3-padding-large">
+                    <a href="https://www.facebook.com/Hamido-Restaurant-258023407567621/"><i class="fa fa-facebook w3-xxlarge" aria-hidden="true">Facebook</i></a>
+                    <a href="https://www.yelp.com/biz/hamido-dearborn"><i class="fa fa-yelp w3-xxlarge" aria-hidden="true">Yelp</i></a>
+
+                </div>
+            </div>
+            <div id='yelpwidget'></div>
+        </footer>
 </body>
 <script>
     function myMap() {
@@ -203,6 +226,18 @@
         });
 
     }
+</script>
+<script>
+    (function() {
+        var s = document.createElement("script");
+        s.async = true;
+        s.onload = s.onreadystatechange = function() {
+            getYelpWidget("hamido-dearborn", "300", "RED", "y", "y", "2");
+        };
+        s.src = 'http://chrisawren.com/widgets/yelp/yelpv2.js';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+    })();
 </script>
 
 </html>

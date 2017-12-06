@@ -44,7 +44,7 @@ nav {
 .navbar-heading {
     padding: 8px 16px;
     display: inline-block;
-    color: black;
+    color: white;
 }
 
 .navbar-button {
@@ -83,20 +83,40 @@ nav {
     }
 }
 
+
 /*.food-sec:nth-child(odd) .card-menu {*/
-    /*float: right;*/
+
+
+/*float: right;*/
+
+
 /*}*/
+
 
 /*.food-sec:nth-child(odd) .card-photo {*/
-    /*float: left;*/
+
+
+/*float: left;*/
+
+
 /*}*/
+
 
 /*.food-sec:nth-child(even) .card-photo {*/
-    /*float: right;*/
+
+
+/*float: right;*/
+
+
 /*}*/
 
+
 /*.food-sec:nth-child(even) .card-menu {*/
-    /*float: left;*/
+
+
+/*float: left;*/
+
+
 /*}*/
 
 .card-photo {
@@ -178,6 +198,7 @@ time {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 8px;
+    color: orangered;
 }
 
 
