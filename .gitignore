@@ -99,3 +99,4 @@ ENV/
 .mypy_cache/
 
 templates/static
+client_secret.json
