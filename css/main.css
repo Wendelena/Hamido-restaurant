@@ -20,6 +20,10 @@ h1 {
     margin: 0;
 }
 
+h3 {
+    font-size: 18px;
+}
+
 #page-title {
     font-size: xx-large;
     font-family: "Playfair Display", serif;
@@ -52,40 +56,51 @@ nav {
     margin-top: 80px;
 }
 
-.carousel {
-    width: 100%;
-    max-width: 350px;
+.food-sec {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
 }
 
 .card-menu {
     display: block;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 .card-photo {
     display: block;
-    padding: 0 8px 32px !important;
+    background-size: cover;
+    background-position: center;
+    height: 250px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 8px !important;
 }
 
 @media only screen and (min-width: 600px) {
     .card-photo {
-        padding: 0 8px !important;
+        margin-bottom: 0 !important;
     }
 }
 
-#content .food-sec:nth-child(odd) .card-menu {
+/*.food-sec:nth-child(odd) .card-menu {*/
+    /*float: right;*/
+/*}*/
+
+/*.food-sec:nth-child(odd) .card-photo {*/
+    /*float: left;*/
+/*}*/
+
+/*.food-sec:nth-child(even) .card-photo {*/
+    /*float: right;*/
+/*}*/
+
+/*.food-sec:nth-child(even) .card-menu {*/
+    /*float: left;*/
+/*}*/
+
+.card-photo {
     float: right;
-}
-
-#content .food-sec:nth-child(odd) .card-photo {
-    float: left;
-}
-
-#content .food-sec:nth-child(even) .card-photo {
-    float: right;
-}
-
-#content .food-sec:nth-child(even) .card-menu {
-    float: left;
 }
 
 .food-sec hr {
@@ -97,7 +112,11 @@ nav {
 }
 
 .food-sub-sec {
-    margin-bottom: 32px;
+    padding-right: 8px;
+}
+
+.dish {
+    margin-bottom: 4px;
 }
 
 .dish * {
