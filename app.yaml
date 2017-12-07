@@ -12,3 +12,5 @@ handlers:
 libraries:
 - name: flask
   version: latest
+- name: oauth2client
+  version: latest
