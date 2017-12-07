@@ -100,22 +100,22 @@ app = Flask(__name__)
 @app.route('/index')
 @app.route('/home')
 def home():
-    return render_template('index.html')
+    return render_template('index-dynamic.html', heading_title="")
 
 
 @app.route('/menu')
 @app.route('/menu.html')
 def menu():
-    return render_template('menu.html')
+    return render_template('menu-dynamic.html', heading_title="<i>MENU</i>")
 
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('index.html')
+    return render_template('index-dynamic.html', heading_title="")
 
 
 @app.errorhandler(500)
-def server_error(err):
+def server_error(e):
     # Log the error and stacktrace.
     logging.exception('An error occurred during a request.')
     return 'An internal error occurred.', 500
