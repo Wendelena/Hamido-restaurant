@@ -16,7 +16,12 @@ h6 {
     font-family: "Playfair Display", serif;
 }
 
-.container:nth-child(odd) {
+.container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+body > .container:nth-child(odd) {
     background: #ffeee5;
 }
 
@@ -38,6 +43,12 @@ h6 {
     padding: 8px 32px !important;
 }
 
+.content-block:before, .content-block:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
 h1 {
     display: inline-block;
     margin: 0;
@@ -46,6 +57,7 @@ h1 {
 h1 i {
     display: inline-block;
     color: black;
+    font-style: normal;
     font-size: large;
     margin: 0;
     transform: translate(0, 2px);

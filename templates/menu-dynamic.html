@@ -1,56 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <title>Menu - Hamido</title>
-
-    <meta name="description" content="Menu">
-    <meta name="author" content="Hamido">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Site styling -->
-    <link rel="stylesheet" href="static/css/main.min.css">
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
+{% extends "index-dynamic.html" %}
 
 {% block include %}
     <script src="static/js/menu.min.js"></script>
 {% endblock %}
 
-</head>
-
-<body>
-
-<header class="w3-top">
-    <div class="w3-bar w3-deep-orange w3-padding w3-card">
-        <h1>
-            <a href="index.html" id="page-title"
-               class="w3-button navbar-heading">Hamido</a>
-            <i>MENU</i>
-        </h1>
-        <!-- Right-sided navbar links -->
 {% block nav-bar %}
-        <nav class="navbar-right">
             <a href="index.html"
                class="w3-button navbar-button">Back Home
             </a>
 {% endblock %}
-        </nav>
-    </div>
-</header>
 
-<!-- !PAGE CONTENT! -->
+{% block content %}
 <div id="content-start" class="container pad-below">
 
     <!-- Appetizers -->
@@ -274,25 +234,7 @@
     </section>
 
 </div>
-<!-- End page content -->
+{% endblock %}
 
-<div class="content-block">
-    <hr>
-</div>
-
-<!-- Footer -->
-<div class="content-block footer">
-<footer>
-    <div>
-        <p class="copyright">Designed by Hi &copy; 2017</p>
-    </div>
-    <div class="w3-right social">
-        <a class="w3-right" href="https://www.facebook.com/Hamido-Restaurant-258023407567621/"><i class="fa-facebook fa w3-xxlarge" ></i></a>
-        <p class="w3-right" style="display:inline-block">&nbsp</p>
-        <a class="w3-right" href="https://www.yelp.com/biz/hamido-dearborn"><i class="fa-yelp fa w3-xxlarge" ></i></a>
-    </div>
-</footer>
-</div>
-</body>
-
-</html>
+{% block append %}
+{% endblock %}
