@@ -100,18 +100,18 @@ app = Flask(__name__)
 @app.route('/index')
 @app.route('/home')
 def home():
-    return render_template('index-dynamic.html', heading_title="")
+    return render_template('index-dynamic.html')
 
 
 @app.route('/menu')
 @app.route('/menu.html')
 def menu():
-    return render_template('menu-dynamic.html', heading_title="<i>MENU</i>")
+    return render_template('menu-dynamic.html')
 
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('index-dynamic.html', heading_title="")
+    return render_template('index-dynamic.html')
 
 
 @app.errorhandler(500)
