@@ -140,7 +140,11 @@
                         <label>name<input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></label>
                         <label>number<input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many people" required name="People "></label>
                         <label>date<input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time " required name="date " value="2017-11-16T20:00 "></label>
-                        <label>text<input class="w3-input w3-padding-16 w3-border" style="padding-bottom:64px!important" type="text area" placeholder="Message" required name="Message "></label>
+                        <label>text
+                            <textarea class="w3-input w3-padding-16 w3-border"
+                                      placeholder="Message" required
+                                      name="Message" style="height: 100px;"></textarea>
+                        </label>
                         <button class="w3-button w3-deep-orange w3-section" type="submit" style="width:300px">Send Message</button>
                     </form>
                 </div>
@@ -154,9 +158,17 @@
                 <p class="copyright">Designed by Hi &copy; 2017</p>
             </div>
             <div class="w3-right social">
-                <button class="w3-right" href="https://www.facebook.com/Hamido-Restaurant-258023407567621/" title="facebook"><i class="fa-facebook fa w3-xxlarge" ></i></button>
+                <a class="w3-right"
+                   href="https://www.facebook.com/Hamido-Restaurant-258023407567621/"
+                   title="facebook">facebook
+                    <i class="fa-facebook fa w3-xxlarge"></i>
+                </a>
                 <p class="w3-right" style="display:inline-block">&nbsp</p>
-                <button class="w3-right" href="https://www.yelp.com/biz/hamido-dearborn" title="Yelp"><i class="fa-yelp fa w3-xxlarge" ></i></button>
+                <a class="w3-right"
+                   href="https://www.yelp.com/biz/hamido-dearborn"
+                   title="yelp">yelp
+                    <i class="fa-yelp fa w3-xxlarge"></i>
+                </a>
             </div>
 
         </footer>

@@ -329,11 +329,23 @@ time {
 }
 
 button{
-    border:none;
+    border: none;
     padding:0;
 }
 
+form {
+    line-height: 1;
+}
+
 label{
-    color:white;
-    padding:0;
+    padding: 0;
+    font-size: 0;
+}
+
+label input, label textarea {
+    font-size: 15px;
+}
+
+footer > div > a {
+    font-size: 0;
 }
