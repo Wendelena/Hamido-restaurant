@@ -327,3 +327,13 @@ time {
     background: #dd4b39;
     color: white;
 }
+
+button{
+    border:none;
+    padding:0;
+}
+
+label{
+    color:white;
+    padding:0;
+}
