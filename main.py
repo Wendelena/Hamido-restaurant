@@ -26,6 +26,7 @@ import os
 
 from apiclient import discovery
 from oauth2client.client import GoogleCredentials
+from oauth2client.contrib.appengine import OAuth2DecoratorFromClientSecrets
 # from oauth2client import client
 # from oauth2client import tools
 # from oauth2client.file import Storage
@@ -89,6 +90,16 @@ class MenuCategory:
     def add_dish(self, list_dish):
         self.dishes.append(Dish(list_dish))
 
+
+SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
+CLIENT_SECRET_FILE = 'client_secret.json'
+
+
+api_auth = OAuth2DecoratorFromClientSecrets(
+    os.path.join(os.path.dirname(__file__), CLIENT_SECRET_FILE), SCOPES)
+
+
+@api_auth.oauth_required
 def get_menu_info():
     """Shows basic usage of the Sheets API.
 
@@ -97,19 +108,26 @@ def get_menu_info():
     https://docs.google.com/spreadsheets/d/1Y9U6GlDPvZYDHeltPQV-M9GhFENL7f2TvBncMByKIno/edit
     """
     # credentials = get_credentials()
-    credentials = DEFAULT_CREDENTIALS
+    # credentials = DEFAULT_CREDENTIALS
     # http = credentials.authorize(httplib2.Http())
     # discoveryUrl = ('https://sheets.googleapis.com/$discovery/rest?'
     #                 'version=v4')
     # service = discovery.build('sheets', 'v4', http=http,
     #                           discoveryServiceUrl=discoveryUrl)
-    service = discovery.build('sheets', 'v4', credentials=credentials)
+    # service = discovery.build('sheets', 'v4', credentials=credentials)
+    service = discovery.build('sheets', 'v4')
 
-    spreadsheetId = '1Y9U6GlDPvZYDHeltPQV-M9GhFENL7f2TvBncMByKIno'
-    rangeName = 'menu!A2:G'
-    result = service.spreadsheets().values().get(
-        spreadsheetId=spreadsheetId, range=rangeName).execute()
-    values = result.get('values', [])
+    # Get the authorized Http object created by the api_auth.
+    http = api_auth.http()
+
+    spreadsheet_id = '1Y9U6GlDPvZYDHeltPQV-M9GhFENL7f2TvBncMByKIno'
+    range_name = 'menu!A2:G'
+
+    # Call the service using the authorized Http object.
+    request = service.spreadsheets().values().get(
+        spreadsheetId=spreadsheet_id, range=range_name)
+    response = request.execute(http=http)
+    values = response.get('values', [])
 
     categories = {}
 
