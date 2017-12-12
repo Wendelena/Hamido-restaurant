@@ -100,3 +100,4 @@ ENV/
 
 templates/static
 client_secret.json
+secret_key.py
