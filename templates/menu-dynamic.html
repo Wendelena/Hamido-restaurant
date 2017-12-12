@@ -14,34 +14,34 @@
 
 {% block content %}
 
-{% for i in range(1, menu|length + 1) %}
-<div id={{ menu[i].content_id }} class="container pad-below">
+{% for category in menu %}
+<div id={{ category.content_id }} class="container pad-below">
     <!-- {{ menu[i].category_name }} -->
-    <section id={{ menu[i].category_id }}
+    <section id={{ category.category_id }}
              class="w3-row w3-row-padding content-block">
-        <h2>{{ menu[i].category_name }}</h2>
+        <h2>{{ category.category_name }}</h2>
         <hr>
-        <div id=id={{ menu[i].carousel_id }}
+        <div id={{ category.carousel_id }}
              class="w3-col l4 m4 s12 card-photo carousel"
-             title={{ menu[i].carousel_title }}
-             style={{ menu[i].img_url }}>
+             title={{ category.carousel_title }}
+             style={{ category.img_url }}>
         </div>
         <div class="card-menu">
             <div class="food-sec w3-col l4 m4 s12">
-            {% for j in range(0, (menu[i].dishes|length / 2)|int + 1) %}
-                <div class="dish"><h3>{{ menu[i].dishes[j].dish_name }}</h3>
+            {% for j in range(0, (category.dishes|length / 2)|int + 1) %}
+                <div class="dish"><h3>{{ category.dishes[j].dish_name }}</h3>
                     <br>
-                    {% for price in menu[i].dishes[j].prices %}
+                    {% for price in category.dishes[j].prices %}
                     <p>{{ price }}</p>
                     {% endfor %}
                 </div>
             {% endfor %}
             </div>
             <div class="food-sec w3-col l4 m4 s12">
-            {% for j in range((menu[i].dishes|length / 2)|int + 1, menu[i].dishes|length) %}
-                <div class="dish"><h3>{{ menu[i].dishes[j].dish_name }}</h3>
+            {% for j in range((category.dishes|length / 2)|int + 1, category.dishes|length) %}
+                <div class="dish"><h3>{{ category.dishes[j].dish_name }}</h3>
                     <br>
-                    {% for price in menu[i].dishes[j].prices %}
+                    {% for price in category.dishes[j].prices %}
                     <p>{{ price }}</p>
                     {% endfor %}
                 </div>
