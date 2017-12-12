@@ -98,11 +98,12 @@ def get_menu_info():
     """
     # credentials = get_credentials()
     credentials = DEFAULT_CREDENTIALS
-    http = credentials.authorize(httplib2.Http())
-    discoveryUrl = ('https://sheets.googleapis.com/$discovery/rest?'
-                    'version=v4')
-    service = discovery.build('sheets', 'v4', http=http,
-                              discoveryServiceUrl=discoveryUrl)
+    # http = credentials.authorize(httplib2.Http())
+    # discoveryUrl = ('https://sheets.googleapis.com/$discovery/rest?'
+    #                 'version=v4')
+    # service = discovery.build('sheets', 'v4', http=http,
+    #                           discoveryServiceUrl=discoveryUrl)
+    service = discovery.build('sheets', 'v4', credentials=credentials)
 
     spreadsheetId = '1Y9U6GlDPvZYDHeltPQV-M9GhFENL7f2TvBncMByKIno'
     rangeName = 'menu!A2:G'
