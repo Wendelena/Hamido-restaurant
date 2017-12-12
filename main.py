@@ -22,57 +22,8 @@ import logging
 from flask import Flask, render_template
 import secret_key
 
-import httplib2
-import os
-
 from apiclient import discovery
-from oauth2client.client import GoogleCredentials
-from oauth2client.contrib.appengine import OAuth2DecoratorFromClientSecrets
 from oauth2client.contrib.flask_util import UserOAuth2
-# from oauth2client import client
-# from oauth2client import tools
-# from oauth2client.file import Storage
-
-import pickle
-from google.appengine.api import memcache
-from google.appengine.api import users
-from oauth2client.client import OAuth2WebServerFlow
-from oauth2client.contrib.appengine import StorageByKeyName
-
-
-DEFAULT_CREDENTIALS = GoogleCredentials.get_application_default()
-
-
-# SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
-# CLIENT_SECRET_FILE = 'client_secret.json'
-# APPLICATION_NAME = 'Google Sheets API Python Quickstart'
-
-
-# def get_credentials():
-#     """Gets valid user credentials from storage.
-#
-#     If nothing has been stored, or if the stored credentials are invalid,
-#     the OAuth2 flow is completed to obtain the new credentials.
-#
-#     Returns:
-#         Credentials, the obtained credential.
-#     """
-#     home_dir = os.path.expanduser('~')
-#     credential_dir = os.path.join(home_dir, '.credentials')
-#     if not os.path.exists(credential_dir):
-#         os.makedirs(credential_dir)
-#     credential_path = os.path.join(
-#         credential_dir,
-#         'sheets.googleapis.com-python-quickstart.json')
-#
-#     store = Storage(credential_path)
-#     credentials = store.get()
-#     if not credentials or credentials.invalid:
-#         flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE, SCOPES)
-#         flow.user_agent = APPLICATION_NAME
-#         credentials = tools.run_flow(flow, store)
-#         print('Storing credentials to ' + credential_path)
-#     return credentials
 
 
 # Set up application
@@ -108,59 +59,17 @@ class MenuCategory:
                        + "-1.jpg');"
         self.dishes = []
         self.dishes.append(Dish(first_dish))
+        self.dishes_col1 = []
+        self.dishes_col2 = []
 
     def add_dish(self, list_dish):
         self.dishes.append(Dish(list_dish))
 
-
-# api_auth = OAuth2DecoratorFromClientSecrets(
-#     os.path.join(os.path.dirname(__file__), CLIENT_SECRET_FILE), SCOPES)
-
-
-# @api_auth.oauth_required
-# def get_menu_info():
-#     """Shows basic usage of the Sheets API.
-#
-#     Creates a Sheets API service object and prints the names and majors of
-#     students in a sample spreadsheet:
-#     https://docs.google.com/spreadsheets/d/1Y9U6GlDPvZYDHeltPQV-M9GhFENL7f2TvBncMByKIno/edit
-#     """
-#     # credentials = get_credentials()
-#     # credentials = DEFAULT_CREDENTIALS
-#     # http = credentials.authorize(httplib2.Http())
-#     # discoveryUrl = ('https://sheets.googleapis.com/$discovery/rest?'
-#     #                 'version=v4')
-#     # service = discovery.build('sheets', 'v4', http=http,
-#     #                           discoveryServiceUrl=discoveryUrl)
-#     # service = discovery.build('sheets', 'v4', credentials=credentials)
-#     service = discovery.build('sheets', 'v4')
-#
-#     # Get the authorized Http object created by the api_auth.
-#     # http = api_auth.http()
-#
-#     spreadsheet_id = '1Y9U6GlDPvZYDHeltPQV-M9GhFENL7f2TvBncMByKIno'
-#     range_name = 'menu!A2:G'
-#
-#     # Call the service using the authorized Http object.
-#     request = service.spreadsheets().values().get(
-#         spreadsheetId=spreadsheet_id, range=range_name)
-#     response = request.execute(http=http)
-#     values = response.get('values', [])
-#
-#     categories = {}
-#
-#     if not values:
-#         logging.exception('Google spreadsheet read fails.')
-#         # TODO: Read cached page
-#     else:
-#         for row in values:
-#             if row[0] in categories:
-#                 categories[row[0]].add_dish(row)
-#             else:
-#                 categories[row[0]] = MenuCategory(row)
-#         # TODO: Cache page
-#
-#     return categories
+    def divide_group(self):
+        for i in range(int(len(self.dishes) / 2) + 1):
+            self.dishes_col1.append(self.dishes[i])
+        for i in range(int(len(self.dishes) / 2) + 1, len(self.dishes)):
+            self.dishes_col2.append(self.dishes[i])
 
 
 def get_menu_info(http=None, credentials=None):
@@ -171,21 +80,9 @@ def get_menu_info(http=None, credentials=None):
     https://docs.google.com/spreadsheets/d/1Y9U6GlDPvZYDHeltPQV-M9GhFENL7f2TvBncMByKIno/edit
     """
 
-    # flow = OAuth2WebServerFlow()
-    # user = users.get_current_user()
-    # memcache.set(user.user_id(), pickle.dumps(flow))
-    #
-    # flow = pickle.loads(memcache.get(user.user_id()))
-
     http = oauth2.http()
-    # credentials = oauth2.credentials
-    # menu = get_menu_info(http=http, credentials=credentials)
-    # menu = get_menu_info(http=http)
 
     service = discovery.build('sheets', 'v4')
-
-    # Get the authorized Http object created by the api_auth.
-    # http = api_auth.http()
 
     spreadsheet_id = '1Y9U6GlDPvZYDHeltPQV-M9GhFENL7f2TvBncMByKIno'
     range_name = 'menu!A2:G'
@@ -207,7 +104,9 @@ def get_menu_info(http=None, credentials=None):
                 categories[row[0]].add_dish(row)
             else:
                 categories[row[0]] = MenuCategory(row)
-        # TODO: Cache page
+    for category in categories:
+        logging.log(category.content_id)
+    # TODO: Cache page
 
     return categories
 
