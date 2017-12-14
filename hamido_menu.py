@@ -72,10 +72,10 @@ class MenuCategory:
         return result
 
 
-def get_menu_info():
+def get_menu_info(cached=True):
 
     # Get menu sheet info.
-    sheet_info = get_sheets_info(SHEET_ID, SHEET_RANGE)
+    sheet_info = get_sheets_info(SHEET_ID, SHEET_RANGE, cached=cached)
 
     categories = {}
 

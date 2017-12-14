@@ -101,7 +101,23 @@ def get_auth_http():
         return http
 
 
-def get_sheets_info(sheet_id, sheet_range):
+def get_sheets_info(sheet_id, sheet_range, cached=True):
+
+    if cached:
+        logging.exception('Read from cache...')
+        if LOCAL:
+            print('Read from cache...')
+            # Read cached menu
+            with open(MENU_CACHE, 'r') as cache:
+                values = pickle.loads(cache.read())
+        else:
+            values = pickle.loads(memcache.get(MENU_KEY))
+
+        if not values:
+            logging.exception('Cache read fails. Request from API...')
+            print('Cache read fails. Request from API...')
+        else:
+            return values
 
     if LOCAL:
         service = discovery.build('sheets', 'v4', http=get_auth_http(),
@@ -124,22 +140,27 @@ def get_sheets_info(sheet_id, sheet_range):
             return None
 
     if not values:
-        logging.exception('Google spreadsheet read fails. Read cache...')
-        if LOCAL:
-            print('Google spreadsheet read fails. Read cache...')
-            # Read cached menu
-            with open(MENU_CACHE, 'r') as cache:
-                values = pickle.loads(cache.read())
+        if not cached:
+            logging.exception('Google spreadsheet read fails. Read cache...')
+            if LOCAL:
+                print('Google spreadsheet read fails. Read cache...')
+                # Read cached menu
+                with open(MENU_CACHE, 'r') as cache:
+                    values = pickle.loads(cache.read())
+            else:
+                values = pickle.loads(memcache.get(MENU_KEY))
+
+            if not values:
+                logging.error('Cache read fails.')
+                print('Cache read fails.')
         else:
-            # Read cached menu
-            values = pickle.loads(memcache.get(MENU_KEY))
-        if not values:
-            logging.exception('Cache read fails.')
-            print('Cache read fails.')
+            logging.error('Request fails.')
+            print('Request fails.')
+            values = None
     else:
-        logging.info('Re-acquire values from Google Sheets API')
+        logging.info('Re-acquire values from Google Sheets API.')
         if LOCAL:
-            print('Re-acquire values from Google Sheets API')
+            print('Re-acquire values from Google Sheets API.')
             # Cache page
             with open(MENU_CACHE, 'w') as cache:
                 cache.write(pickle.dumps(values))

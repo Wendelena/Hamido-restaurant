@@ -55,14 +55,15 @@ def home_page():
 @app.route('/menu')
 @app.route('/menu.html')
 def menu_page():
-    return render_template('menu.html')
+    menu = get_menu_info(cached=True)
+    return render_template('menu-dynamic.html', menu=menu)
 
 
 @app.route('/newmenu')
 @app.route('/newmenu.html')
 @oauth2.required(scopes=[SCOPES])
 def new_menu_init():
-    menu = get_menu_info()
+    menu = get_menu_info(cached=False)
     return render_template('menu-dynamic.html', menu=menu)
 
 
