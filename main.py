@@ -55,7 +55,7 @@ def home_page():
 @app.route('/menu')
 @app.route('/menu.html')
 def menu_page():
-    menu = get_menu_info(cached=True)
+    menu = get_menu_info()
     return render_template('menu-dynamic.html', menu=menu)
 
 
