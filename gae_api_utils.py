@@ -3,16 +3,17 @@ from __future__ import print_function
 import logging
 import pickle
 
+import flag_local
 from apiclient import discovery
 
 # Local environment: True; GAE: False
-LOCAL = False
+LOCAL = flag_local.LOCAL
 
 
 # Flask app OAuth2
 OAUTH2 = None
 # OAuth information
-CLIENT_SECRET_FILE = 'client_secret.json'
+CLIENT_SECRET_FILE = 'client_secret_example.json'
 # API scope
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
 # Application name
@@ -32,12 +33,10 @@ if not LOCAL:
         from oauth2client.contrib.flask_util import UserOAuth2
         from google.appengine.api import memcache
     except ImportError:
-        logging.exception('Not in GAE environment. Convert to local '
-                          'environment.')
-        print('Not in GAE environment. Convert to local environment.')
+        logging.exception('Not in GAE environment.')
+        print('Not in GAE environment.')
         UserOAuth2 = None
         memcache = None
-        LOCAL = True
 
 
 # Local python environment

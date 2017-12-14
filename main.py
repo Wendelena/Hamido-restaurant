@@ -26,10 +26,6 @@ import gae_api_utils
 from hamido_menu import get_menu_info
 
 
-# Local environment: True; GAE: False
-gae_api_utils.LOCAL = False
-
-
 # Set up application
 app = Flask(__name__)
 

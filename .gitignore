@@ -105,3 +105,5 @@ secret_key.py
 menu.cache
 localtest.py
 backup
+
+flag_local.py
