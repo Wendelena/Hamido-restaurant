@@ -8,12 +8,13 @@ from apiclient import discovery
 
 # Local environment: True; GAE: False
 LOCAL = flag_local.LOCAL
+START = True
 
 
 # Flask app OAuth2
 OAUTH2 = None
 # OAuth information
-CLIENT_SECRET_FILE = 'client_secret_example.json'
+CLIENT_SECRET_FILE = 'client_secret.json'
 # API scope
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
 # Application name
@@ -102,13 +103,16 @@ def get_auth_http():
 
 def get_sheets_info(sheet_id, sheet_range, cached=True):
 
-    if cached:
+    if cached or START:
         logging.exception('Read from cache...')
         if LOCAL:
             print('Read from cache...')
             # Read cached menu
-            with open(MENU_CACHE, 'r') as cache:
-                values = pickle.loads(cache.read())
+            try:
+                with open(MENU_CACHE, 'r') as cache:
+                    values = pickle.loads(cache.read())
+            except:
+                values = None
         else:
             values = pickle.loads(memcache.get(MENU_KEY))
 
@@ -116,6 +120,8 @@ def get_sheets_info(sheet_id, sheet_range, cached=True):
             logging.exception('Cache read fails. Request from API...')
             print('Cache read fails. Request from API...')
         else:
+            global START
+            START = False
             return values
 
     if LOCAL:

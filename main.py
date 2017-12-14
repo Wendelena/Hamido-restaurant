@@ -56,7 +56,6 @@ def menu_page():
 
 
 @app.route('/newmenu')
-@app.route('/newmenu.html')
 @oauth2.required(scopes=[SCOPES])
 def new_menu_init():
     menu = get_menu_info(cached=False)
