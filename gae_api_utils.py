@@ -9,6 +9,8 @@ from apiclient import discovery
 LOCAL = True
 
 
+# Flask app OAuth2
+OAUTH2 = None
 # OAuth information
 CLIENT_SECRET_FILE = 'client_secret.json'
 # API scope
@@ -26,13 +28,15 @@ MENU_CACHE = 'menu.cache'
 # Python environment on GAE using Flask
 # (See requirements.txt for third-party module requirements)
 if not LOCAL:
-    from oauth2client.contrib.flask_util import UserOAuth2
     try:
+        from oauth2client.contrib.flask_util import UserOAuth2
         from google.appengine.api import memcache
     except ImportError:
         logging.exception('Not in GAE environment. Convert to local '
                           'environment.')
         print('Not in GAE environment. Convert to local environment.')
+        UserOAuth2 = None
+        memcache = None
         LOCAL = True
 
 
@@ -48,10 +52,21 @@ if LOCAL:
         import argparse
         flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
     except ImportError:
+        argparse = None
         flags = None
 
 
-def get_auth_http(app=None):
+def oauth_setup(app):
+    if not LOCAL:
+        global OAUTH2
+        OAUTH2 = UserOAuth2(app)
+        return OAUTH2
+    else:
+        print('No need for Flask app OAuth setup in local environment.')
+        return None
+
+
+def get_auth_http():
 
     if LOCAL:
         project_root = os.path.dirname(os.path.abspath(__file__))
@@ -78,16 +93,15 @@ def get_auth_http(app=None):
         return http
 
     else:
-        if app:
-            oauth2 = UserOAuth2(app)
-            http = oauth2.http()
+        if OAUTH2:
+            http = OAUTH2.http()
         else:
-            logging.exception('No Flask app provided for OAuth.')
+            logging.exception('Flask app OAuth not setup.')
             http = None
         return http
 
 
-def get_sheets_info(sheet_id, sheet_range, app=None):
+def get_sheets_info(sheet_id, sheet_range):
 
     if LOCAL:
         service = discovery.build('sheets', 'v4', http=get_auth_http(),
@@ -99,14 +113,14 @@ def get_sheets_info(sheet_id, sheet_range, app=None):
         values = result.get('values', [])
 
     else:
-        if app:
-            service = discovery.build('sheets', 'v4', http=get_auth_http(app))
+        if OAUTH2:
+            service = discovery.build('sheets', 'v4', http=get_auth_http())
             # Call the service using the authorized Http object.
             result = service.spreadsheets().values().get(
                 spreadsheetId=sheet_id, range=sheet_range).execute()
             values = result.get('values', [])
         else:
-            logging.exception('No Flask app provided for OAuth.')
+            logging.exception('Flask app OAuth not setup.')
             return None
 
     if not values:

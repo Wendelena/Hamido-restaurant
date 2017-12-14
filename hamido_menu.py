@@ -72,10 +72,10 @@ class MenuCategory:
         return result
 
 
-def get_menu_info(app=None):
+def get_menu_info():
 
     # Get menu sheet info.
-    sheet_info = get_sheets_info(SHEET_ID, SHEET_RANGE, app)
+    sheet_info = get_sheets_info(SHEET_ID, SHEET_RANGE)
 
     categories = {}
 
@@ -92,7 +92,7 @@ def get_menu_info(app=None):
         for category in categories:
             categories[category].divide_group()
 
-        logging.exception('Menu information loaded.')
+        logging.info('Menu information loaded.')
         print('Menu information loaded.')
 
     return categories

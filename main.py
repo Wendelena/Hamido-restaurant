@@ -22,120 +22,48 @@ import logging
 from flask import Flask, render_template
 import secret_key
 
-from apiclient import discovery
-from oauth2client.contrib.flask_util import UserOAuth2
+import gae_api_utils
+from hamido_menu import get_menu_info
+
+
+# Local environment: True; GAE: False
+gae_api_utils.LOCAL = False
 
 
 # Set up application
 app = Flask(__name__)
 
 FLASK_SESSION_SECRET = secret_key.SECRET_KEY
-SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
-CLIENT_SECRET_FILE = 'client_secret.json'
+SCOPES = gae_api_utils.SCOPES
+CLIENT_SECRET_FILE = gae_api_utils.CLIENT_SECRET_FILE
 
 app.config['SECRET_KEY'] = FLASK_SESSION_SECRET
 app.config['GOOGLE_OAUTH2_CLIENT_SECRETS_FILE'] = CLIENT_SECRET_FILE
 
 
-oauth2 = UserOAuth2(app)
-
-
-class Dish:
-    def __init__(self, list_dish):
-        self.dish_name = list_dish[3]
-        self.prices = [list_dish[i] for i in range(4, len(list_dish) - 4)]
-
-
-class MenuCategory:
-    def __init__(self, first_dish):
-        self.content_id = first_dish[0]
-        self.category_id = first_dish[1]
-        self.category_name = first_dish[2]
-        self.section_id = "content-" + self.content_id
-        self.carousel_id = "carousel-" + self.category_id
-        self.carousel_title = self.category_name + " photo carousel"
-        self.img_url = "background-image: url(" \
-                       "'static/img/menuphoto/carousel-" + self.category_id \
-                       + "-1.jpg');"
-        self.dishes = []
-        self.dishes.append(Dish(first_dish))
-        self.dishes_col1 = []
-        self.dishes_col2 = []
-
-    def add_dish(self, list_dish):
-        self.dishes.append(Dish(list_dish))
-
-    def divide_group(self):
-        for i in range(int(len(self.dishes) / 2) + 1):
-            self.dishes_col1.append(self.dishes[i])
-        for i in range(int(len(self.dishes) / 2) + 1, len(self.dishes)):
-            self.dishes_col2.append(self.dishes[i])
-
-
-def get_menu_info(http=None, credentials=None):
-    """Shows basic usage of the Sheets API.
-
-    Creates a Sheets API service object and prints the names and majors of
-    students in a sample spreadsheet:
-    https://docs.google.com/spreadsheets/d/1Y9U6GlDPvZYDHeltPQV-M9GhFENL7f2TvBncMByKIno/edit
-    """
-
-    http = oauth2.http()
-
-    service = discovery.build('sheets', 'v4')
-
-    spreadsheet_id = '1Y9U6GlDPvZYDHeltPQV-M9GhFENL7f2TvBncMByKIno'
-    range_name = 'menu!A2:G'
-
-    # Call the service using the authorized Http object.
-    request = service.spreadsheets().values().get(
-        spreadsheetId=spreadsheet_id, range=range_name)
-    response = request.execute(http=http)
-    values = response.get('values', [])
-
-    categories = {}
-
-    if not values:
-        logging.exception('Google spreadsheet read fails.')
-        # TODO: Read cached page
-    else:
-        for row in values:
-            if row[0] in categories:
-                categories[row[0]].add_dish(row)
-            else:
-                categories[row[0]] = MenuCategory(row)
-    for category in categories:
-        logging.log(category.content_id)
-    # TODO: Cache page
-
-    return categories
+oauth2 = gae_api_utils.oauth_setup(app)
 
 
 @app.route('/')
 @app.route('/index.html')
 @app.route('/index')
 @app.route('/home')
-def home():
+def home_page():
     return render_template('index-dynamic.html')
 
 
 @app.route('/menu')
 @app.route('/menu.html')
-def menu():
+def menu_page():
     return render_template('menu.html')
 
 
 @app.route('/newmenu')
 @app.route('/newmenu.html')
 @oauth2.required(scopes=[SCOPES])
-def new_menu():
+def new_menu_init():
     menu = get_menu_info()
     return render_template('menu-dynamic.html', menu=menu)
-
-
-# @app.route(api_auth.callback_path)
-# def oauth_callback():
-#     return api_auth.callback_handler()
 
 
 @app.errorhandler(404)
