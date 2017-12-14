@@ -8,7 +8,7 @@ from apiclient import discovery
 
 # Local environment: True; GAE: False
 LOCAL = flag_local.LOCAL
-START = True
+EVER_CACHED = False
 
 
 # Flask app OAuth2
@@ -103,7 +103,7 @@ def get_auth_http():
 
 def get_sheets_info(sheet_id, sheet_range, cached=True):
 
-    if cached or START:
+    if EVER_CACHED and cached:
         logging.exception('Read from cache...')
         if LOCAL:
             print('Read from cache...')
@@ -120,8 +120,6 @@ def get_sheets_info(sheet_id, sheet_range, cached=True):
             logging.exception('Cache read fails. Request from API...')
             print('Cache read fails. Request from API...')
         else:
-            global START
-            START = False
             return values
 
     if LOCAL:
@@ -172,5 +170,7 @@ def get_sheets_info(sheet_id, sheet_range, cached=True):
         else:
             # Cache page
             memcache.set(MENU_KEY, pickle.dumps(values))
+        global EVER_CACHED
+        EVER_CACHED = True
 
     return values
