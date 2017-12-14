@@ -100,4 +100,7 @@ ENV/
 
 templates/static
 client_secret.json
+local_secret.json
 secret_key.py
+menu.cache
+localtest.py

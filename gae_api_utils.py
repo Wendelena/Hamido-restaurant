@@ -1,0 +1,136 @@
+from __future__ import print_function
+
+import logging
+import pickle
+
+from apiclient import discovery
+
+# Local environment: True; GAE: False
+LOCAL = True
+
+
+# OAuth information
+CLIENT_SECRET_FILE = 'client_secret.json'
+# API scope
+SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
+# Application name
+APPLICATION_NAME = 'Google Sheets API Python Access'
+# API URL
+API_URL = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
+# Menu object key
+MENU_KEY = 'Menu'
+# Cache file name
+MENU_CACHE = 'menu.cache'
+
+
+# Python environment on GAE using Flask
+# (See requirements.txt for third-party module requirements)
+if not LOCAL:
+    from oauth2client.contrib.flask_util import UserOAuth2
+    try:
+        from google.appengine.api import memcache
+    except ImportError:
+        logging.exception('Not in GAE environment. Convert to local '
+                          'environment.')
+        print('Not in GAE environment. Convert to local environment.')
+        LOCAL = True
+
+
+# Local python environment
+if LOCAL:
+    import httplib2
+    import os
+    from oauth2client import client
+    from oauth2client import tools
+    from oauth2client.file import Storage
+
+    try:
+        import argparse
+        flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
+    except ImportError:
+        flags = None
+
+
+def get_auth_http(app=None):
+
+    if LOCAL:
+        project_root = os.path.dirname(os.path.abspath(__file__))
+        credential_path = os.path.join(project_root, 'local_secret.json')
+        store = Storage(credential_path)
+        credentials = store.get()
+        if not credentials or credentials.invalid:
+            logging.info('Requesting credentials...')
+            print('Requesting credentials...')
+            flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE, SCOPES)
+            flow.user_agent = APPLICATION_NAME
+            if flags:
+                credentials = tools.run_flow(flow, store, flags)
+            else:  # Needed only for compatibility with Python 2.6
+                credentials = tools.run_flow(flow, store)
+            logging.info('Storing credentials to ' + credential_path)
+            print('Storing credentials to ' + credential_path)
+        else:
+            logging.info('Using locally stored credentials.')
+            print('Using locally stored credentials.')
+
+        http = credentials.authorize(httplib2.Http())
+
+        return http
+
+    else:
+        if app:
+            oauth2 = UserOAuth2(app)
+            http = oauth2.http()
+        else:
+            logging.exception('No Flask app provided for OAuth.')
+            http = None
+        return http
+
+
+def get_sheets_info(sheet_id, sheet_range, app=None):
+
+    if LOCAL:
+        service = discovery.build('sheets', 'v4', http=get_auth_http(),
+                                  discoveryServiceUrl=API_URL)
+
+        # Call the service using the authorized Http object.
+        result = service.spreadsheets().values().get(
+            spreadsheetId=sheet_id, range=sheet_range).execute()
+        values = result.get('values', [])
+
+    else:
+        if app:
+            service = discovery.build('sheets', 'v4', http=get_auth_http(app))
+            # Call the service using the authorized Http object.
+            result = service.spreadsheets().values().get(
+                spreadsheetId=sheet_id, range=sheet_range).execute()
+            values = result.get('values', [])
+        else:
+            logging.exception('No Flask app provided for OAuth.')
+            return None
+
+    if not values:
+        logging.exception('Google spreadsheet read fails. Read cache...')
+        if LOCAL:
+            print('Google spreadsheet read fails. Read cache...')
+            # Read cached menu
+            with open(MENU_CACHE, 'r') as cache:
+                values = pickle.loads(cache.read())
+        else:
+            # Read cached menu
+            values = pickle.loads(memcache.get(MENU_KEY))
+        if not values:
+            logging.exception('Cache read fails.')
+            print('Cache read fails.')
+    else:
+        logging.info('Re-acquire values from Google Sheets API')
+        if LOCAL:
+            print('Re-acquire values from Google Sheets API')
+            # Cache page
+            with open(MENU_CACHE, 'w') as cache:
+                cache.write(pickle.dumps(values))
+        else:
+            # Cache page
+            memcache.set(MENU_KEY, pickle.dumps(values))
+
+    return values
