@@ -6,7 +6,7 @@ import pickle
 from apiclient import discovery
 
 # Local environment: True; GAE: False
-LOCAL = True
+LOCAL = False
 
 
 # Flask app OAuth2
