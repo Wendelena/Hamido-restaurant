@@ -1,0 +1,770 @@
+(lp0
+(lp1
+V1
+p2
+aVappetizers
+p3
+aVAppetizers
+p4
+aVFalafel
+p5
+aV7.99 (Dozen)
+p6
+aV4.99 (1/2 Dozen)
+p7
+aa(lp8
+g2
+aVappetizers
+p9
+aVAppetizers
+p10
+aVHommous
+p11
+aV3.99 (S)
+p12
+aV5.99 (M)
+p13
+aV8.99 (L)
+p14
+aa(lp15
+g2
+aVappetizers
+p16
+aVAppetizers
+p17
+aVBaba Ghanouj
+p18
+aV3.99 (S)
+p19
+aV5.99 (M)
+p20
+aV8.99 (L)
+p21
+aa(lp22
+g2
+aVappetizers
+p23
+aVAppetizers
+p24
+aVRice with Meat
+p25
+aV2.99 (S)
+p26
+aV4.99 (M)
+p27
+aV5.99 (L)
+p28
+aa(lp29
+g2
+aVappetizers
+p30
+aVAppetizers
+p31
+aVFrench Fries
+p32
+aV2.99 (S)
+p33
+aV4.99 (M)
+p34
+aV5.99 (L)
+p35
+aa(lp36
+g2
+aVappetizers
+p37
+aVAppetizers
+p38
+aVCurly Fries
+p39
+aV2.99 (S)
+p40
+aV4.99 (M)
+p41
+aV5.99 (L)
+p42
+aa(lp43
+g2
+aVappetizers
+p44
+aVAppetizers
+p45
+aVOnion Rings
+p46
+aV2.99 (S)
+p47
+aV4.99 (M)
+p48
+aV5.99 (L)
+p49
+aa(lp50
+g2
+aVappetizers
+p51
+aVAppetizers
+p52
+aVFried Shrimp
+p53
+aV12.99
+p54
+aa(lp55
+V2
+p56
+aVentrees
+p57
+aVEntrees
+p58
+aVBoneless Breast
+p59
+aV12.99
+p60
+aa(lp61
+g56
+aVentrees
+p62
+aVEntrees
+p63
+aVChicken Shawarma
+p64
+aV14.99
+p65
+aa(lp66
+g56
+aVentrees
+p67
+aVEntrees
+p68
+aVMeat Shawarma
+p69
+aV14.99
+p70
+aa(lp71
+g56
+aVentrees
+p72
+aVEntrees
+p73
+aVShawarma Combo
+p74
+aV15.99
+p75
+aa(lp76
+g56
+aVentrees
+p77
+aVEntrees
+p78
+aVShish Combo
+p79
+aV15.99
+p80
+aa(lp81
+g56
+aVentrees
+p82
+aVEntrees
+p83
+aVHamido's Home Steak
+p84
+aV15.99
+p85
+aa(lp86
+g56
+aVentrees
+p87
+aVEntrees
+p88
+aVLamb Chops
+p89
+aV15.99
+p90
+aa(lp91
+g56
+aVentrees
+p92
+aVEntrees
+p93
+aVShish Tawook
+p94
+aV12.99
+p95
+aa(lp96
+g56
+aVentrees
+p97
+aVEntrees
+p98
+aVShish Kabab
+p99
+aV12.99
+p100
+aa(lp101
+g56
+aVentrees
+p102
+aVEntrees
+p103
+aVShish Kafta
+p104
+aV12.99
+p105
+aa(lp106
+V3
+p107
+aVsandwiches
+p108
+aVSandwiches
+p109
+aVChicken Shawarma
+p110
+aV3.99
+p111
+aa(lp112
+g107
+aVsandwiches
+p113
+aVSandwiches
+p114
+aVMeat Shawarma
+p115
+aV3.99
+p116
+aa(lp117
+g107
+aVsandwiches
+p118
+aVSandwiches
+p119
+aVShish Kabab
+p120
+aV4.29
+p121
+aa(lp122
+g107
+aVsandwiches
+p123
+aVSandwiches
+p124
+aVFalafel
+p125
+aV3.99
+p126
+aa(lp127
+g107
+aVsandwiches
+p128
+aVSandwiches
+p129
+aVShish Tawook
+p130
+aV4.29
+p131
+aa(lp132
+g107
+aVsandwiches
+p133
+aVSandwiches
+p134
+aVShish Kafta
+p135
+aV4.29
+p136
+aa(lp137
+g107
+aVsandwiches
+p138
+aVSandwiches
+p139
+aVChicken
+p140
+aV4.29
+p141
+aa(lp142
+g107
+aVsandwiches
+p143
+aVSandwiches
+p144
+aVGyro
+p145
+aV4.29
+p146
+aa(lp147
+g107
+aVsandwiches
+p148
+aVSandwiches
+p149
+aVMarkouk
+p150
+aV5.99
+p151
+aa(lp152
+V4
+p153
+aVsubs
+p154
+aVSubs
+p155
+aVSteak
+p156
+aV5.49 (8")
+p157
+aV7.49 (12")
+p158
+aa(lp159
+g153
+aVsubs
+p160
+aVSubs
+p161
+aVTurkey
+p162
+aV5.49 (8")
+p163
+aV7.49 (12")
+p164
+aa(lp165
+g153
+aVsubs
+p166
+aVSubs
+p167
+aVTuna
+p168
+aV5.49 (8")
+p169
+aV7.49 (12")
+p170
+aa(lp171
+g153
+aVsubs
+p172
+aVSubs
+p173
+aVChicken
+p174
+aV5.49 (8")
+p175
+aV7.49 (12")
+p176
+aa(lp177
+g153
+aVsubs
+p178
+aVSubs
+p179
+aVVeggie
+p180
+aV5.49 (8")
+p181
+aV7.49 (12")
+p182
+aa(lp183
+g153
+aVsubs
+p184
+aVSubs
+p185
+aVFries
+p186
+aV5.49 (8")
+p187
+aV7.49 (12")
+p188
+aa(lp189
+g153
+aVsubs
+p190
+aVSubs
+p191
+aVEscalope
+p192
+aV5.49 (8")
+p193
+aV7.49 (12")
+p194
+aa(lp195
+g153
+aVsubs
+p196
+aVSubs
+p197
+aVSojok
+p198
+aV5.49 (8")
+p199
+aV7.49 (12")
+p200
+aa(lp201
+g153
+aVsubs
+p202
+aVSubs
+p203
+aVMakanlk
+p204
+aV5.49 (8")
+p205
+aV7.49 (12")
+p206
+aa(lp207
+V5
+p208
+aVbreakfast-salads
+p209
+aVBreakfast &amp; Salads
+p210
+aVChicken Soup
+p211
+aV2.99
+p212
+aa(lp213
+g208
+aVbreakfast-salads
+p214
+aVBreakfast &amp; Salads
+p215
+aVLentll Soup
+p216
+aV2.99
+p217
+aa(lp218
+g208
+aVbreakfast-salads
+p219
+aVBreakfast &amp; Salads
+p220
+aVFava Beans
+p221
+aV5.99
+p222
+aa(lp223
+g208
+aVbreakfast-salads
+p224
+aVBreakfast &amp; Salads
+p225
+aVFried Eggs
+p226
+aV5.99
+p227
+aa(lp228
+g208
+aVbreakfast-salads
+p229
+aVBreakfast &amp; Salads
+p230
+aVEggs with Meat
+p231
+aV8.99
+p232
+aa(lp233
+g208
+aVbreakfast-salads
+p234
+aVBreakfast &amp; Salads
+p235
+aVFattoush
+p236
+aV3.99 (S)
+p237
+aV5.99 (M)
+p238
+aV8.99 (L)
+p239
+aa(lp240
+g208
+aVbreakfast-salads
+p241
+aVBreakfast &amp; Salads
+p242
+aVTabbouli
+p243
+aV3.99 (S)
+p244
+aV5.99 (M)
+p245
+aV8.99 (L)
+p246
+aa(lp247
+g208
+aVbreakfast-salads
+p248
+aVBreakfast &amp; Salads
+p249
+aVShawarma Salad
+p250
+aV5.99 (S)
+p251
+aV8.99 (M)
+p252
+aV13.99 (L)
+p253
+aa(lp254
+V6
+p255
+aVburgers-quesadillas
+p256
+aVBurgers &amp; Quesadillas
+p257
+aVFish Burger
+p258
+aV5.99
+p259
+aa(lp260
+g255
+aVburgers-quesadillas
+p261
+aVBurgers &amp; Quesadillas
+p262
+aVHamburger
+p263
+aV5.99
+p264
+aa(lp265
+g255
+aVburgers-quesadillas
+p266
+aVBurgers &amp; Quesadillas
+p267
+aVCheese Burger
+p268
+aV6.49
+p269
+aa(lp270
+g255
+aVburgers-quesadillas
+p271
+aVBurgers &amp; Quesadillas
+p272
+aVChicken Burger
+p273
+aV6.49
+p274
+aa(lp275
+g255
+aVburgers-quesadillas
+p276
+aVBurgers &amp; Quesadillas
+p277
+aVMushroom/Swiss Burger
+p278
+aV6.49
+p279
+aa(lp280
+g255
+aVburgers-quesadillas
+p281
+aVBurgers &amp; Quesadillas
+p282
+aVChicken Quesadillas
+p283
+aV8.99
+p284
+aa(lp285
+g255
+aVburgers-quesadillas
+p286
+aVBurgers &amp; Quesadillas
+p287
+aVSteak Quesadillas
+p288
+aV8.99
+p289
+aa(lp290
+V7
+p291
+aVchicken
+p292
+aVChicken
+p293
+aVWhole Chicken
+p294
+aV14.99
+p295
+aa(lp296
+g291
+aVchicken
+p297
+aVChicken
+p298
+aVHalf Chicken
+p299
+aV9.99
+p300
+aa(lp301
+g291
+aVchicken
+p302
+aVChicken
+p303
+aVBoneless Chicken
+p304
+aV16.99
+p305
+aa(lp306
+g291
+aVchicken
+p307
+aVChicken
+p308
+aVHalf Boneless Chicken
+p309
+aV12.99
+p310
+aa(lp311
+g291
+aVchicken
+p312
+aVChicken
+p313
+aVWings
+p314
+aV6.49 (6 Pieces)
+p315
+aV11.99 (12 Pieces)
+p316
+aa(lp317
+g291
+aVchicken
+p318
+aVChicken
+p319
+aVTenders
+p320
+aV7.49 (6 Pieces)
+p321
+aV12.99 (12 Pieces)
+p322
+aa(lp323
+g291
+aVchicken
+p324
+aVChicken
+p325
+aVFried Chicken
+p326
+aV16.99
+p327
+aa(lp328
+V8
+p329
+aVdesserts
+p330
+aVDesserts
+p331
+aVCheese Cake
+p332
+aV2.49
+p333
+aa(lp334
+g329
+aVdesserts
+p335
+aVDesserts
+p336
+aVRice Pudding
+p337
+aV2.49
+p338
+aa(lp339
+g329
+aVdesserts
+p340
+aVDesserts
+p341
+aVFresh Raw Carrot or Apple Juice
+p342
+aV3.99
+p343
+aa(lp344
+g329
+aVdesserts
+p345
+aVDesserts
+p346
+aVCocktail (Chunks or Blended)
+p347
+aV3.99
+p348
+aa(lp349
+g329
+aVdesserts
+p350
+aVDesserts
+p351
+aVFruit Cocktail
+p352
+aV3.99
+p353
+aa(lp354
+g329
+aVdesserts
+p355
+aVDesserts
+p356
+aVStrawberry Mango Smoothies
+p357
+aV3.99
+p358
+aa(lp359
+g329
+aVdesserts
+p360
+aVDesserts
+p361
+aVStrawberry Smoothies
+p362
+aV3.99
+p363
+aa(lp364
+g329
+aVdesserts
+p365
+aVDesserts
+p366
+aVMango Smoothies
+p367
+aV3.99
+p368
+aa(lp369
+g329
+aVdesserts
+p370
+aVDesserts
+p371
+aVGuava Smoothies
+p372
+aV3.99
+p373
+aa(lp374
+g329
+aVdesserts
+p375
+aVDesserts
+p376
+aVOrange Smoothies
+p377
+aV3.99
+p378
+aa(lp379
+g329
+aVdesserts
+p380
+aVDesserts
+p381
+aVStrawberry Banana Smoothies
+p382
+aV3.99
+p383
+aa(lp384
+g329
+aVdesserts
+p385
+aVDesserts
+p386
+aVGuava Banana Smoothies
+p387
+aV3.99
+p388
+aa.
