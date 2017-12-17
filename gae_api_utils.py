@@ -10,7 +10,6 @@ from apiclient import discovery
 LOCAL = flag_local.LOCAL
 EVER_CACHED = False
 
-
 # Flask app OAuth2
 OAUTH2 = None
 # OAuth information
@@ -26,7 +25,6 @@ MENU_KEY = 'Menu'
 # Cache file name
 MENU_CACHE = 'menu.cache'
 
-
 # Python environment on GAE using Flask
 # (See requirements.txt for third-party module requirements)
 if not LOCAL:
@@ -39,7 +37,6 @@ if not LOCAL:
         UserOAuth2 = None
         memcache = None
 
-
 # Local python environment
 if LOCAL:
     import httplib2
@@ -50,6 +47,7 @@ if LOCAL:
 
     try:
         import argparse
+
         flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
     except ImportError:
         argparse = None
@@ -67,7 +65,6 @@ def oauth_setup(app):
 
 
 def get_auth_http():
-
     if LOCAL:
         project_root = os.path.dirname(os.path.abspath(__file__))
         credential_path = os.path.join(project_root, 'local_secret.json')
@@ -102,7 +99,7 @@ def get_auth_http():
 
 
 def get_sheets_info(sheet_id, sheet_range, cached=True):
-
+    global EVER_CACHED
     if EVER_CACHED and cached:
         logging.info('Read from cache...')
         if LOCAL:
@@ -114,7 +111,13 @@ def get_sheets_info(sheet_id, sheet_range, cached=True):
             except:
                 values = None
         else:
-            values = pickle.loads(memcache.get(MENU_KEY))
+            try:
+                values = pickle.loads(memcache.get(MENU_KEY))
+            except TypeError:
+                values = None
+            except:
+                values = None
+                logging.warning('New error.')
 
         if not values:
             logging.info('Cache read fails. Request from API...')
@@ -170,7 +173,6 @@ def get_sheets_info(sheet_id, sheet_range, cached=True):
         else:
             # Cache page
             memcache.set(MENU_KEY, pickle.dumps(values))
-        global EVER_CACHED
         EVER_CACHED = True
 
     return values

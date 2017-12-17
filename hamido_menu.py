@@ -1,9 +1,12 @@
 from __future__ import print_function
 
 import logging
+import flag_local
 
 from gae_api_utils import get_sheets_info
 
+# Local environment: True; GAE: False
+LOCAL = flag_local.LOCAL
 
 # Spreadsheet information
 SHEET_ID = '1Y9U6GlDPvZYDHeltPQV-M9GhFENL7f2TvBncMByKIno'
@@ -81,7 +84,8 @@ def get_menu_info(cached=True):
 
     if not sheet_info:
         logging.warning('No menu data.')
-        print('No menu data.')
+        if LOCAL:
+            print('No menu data.')
     else:
         # Initialize menu variables
         for row in sheet_info:
@@ -93,6 +97,7 @@ def get_menu_info(cached=True):
             categories[category].divide_group()
 
         logging.info('Menu information loaded.')
-        print('Menu information loaded.')
+        if LOCAL:
+            print('Menu information loaded.')
 
     return categories
