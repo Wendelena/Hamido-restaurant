@@ -104,7 +104,7 @@ def get_auth_http():
 def get_sheets_info(sheet_id, sheet_range, cached=True):
 
     if EVER_CACHED and cached:
-        logging.exception('Read from cache...')
+        logging.info('Read from cache...')
         if LOCAL:
             print('Read from cache...')
             # Read cached menu
@@ -117,7 +117,7 @@ def get_sheets_info(sheet_id, sheet_range, cached=True):
             values = pickle.loads(memcache.get(MENU_KEY))
 
         if not values:
-            logging.exception('Cache read fails. Request from API...')
+            logging.info('Cache read fails. Request from API...')
             print('Cache read fails. Request from API...')
         else:
             return values

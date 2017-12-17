@@ -80,7 +80,7 @@ def get_menu_info(cached=True):
     categories = {}
 
     if not sheet_info:
-        logging.exception('No menu data.')
+        logging.warning('No menu data.')
         print('No menu data.')
     else:
         # Initialize menu variables
