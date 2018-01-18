@@ -86,6 +86,7 @@ def get_menu_info(cached=True):
         logging.warning('No menu data.')
         if LOCAL:
             print('No menu data.')
+        return None
     else:
         # Initialize menu variables
         for row in sheet_info:

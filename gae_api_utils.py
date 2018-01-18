@@ -91,7 +91,11 @@ def get_auth_http():
 
     else:
         if OAUTH2:
-            http = OAUTH2.http()
+            try:
+                http = OAUTH2.http()
+            except ValueError:
+                logging.exception('No credentials available.')
+                http = None
         else:
             logging.exception('Flask app OAuth not setup.')
             http = None
@@ -136,11 +140,14 @@ def get_sheets_info(sheet_id, sheet_range, cached=True):
 
     else:
         if OAUTH2:
-            service = discovery.build('sheets', 'v4', http=get_auth_http())
-            # Call the service using the authorized Http object.
-            result = service.spreadsheets().values().get(
-                spreadsheetId=sheet_id, range=sheet_range).execute()
-            values = result.get('values', [])
+            http = get_auth_http()
+            if http:
+                service = discovery.build('sheets', 'v4', http=http)
+                # Call the service using the authorized Http object.
+                result = service.spreadsheets().values().get(
+                    spreadsheetId=sheet_id, range=sheet_range).execute()
+                values = result.get('values', [])
+            return None
         else:
             logging.exception('Flask app OAuth not setup.')
             return None

@@ -52,7 +52,11 @@ def home_page():
 @app.route('/menu.html')
 def menu_page():
     menu = get_menu_info()
-    return render_template('menu-dynamic.html', menu=menu)
+    if menu:
+        return render_template('menu-dynamic.html', menu=menu)
+    else:
+        logging.exception('No menu retrieved, using static file instead.')
+        return render_template('menu.html')
 
 
 @app.route('/newmenu')
