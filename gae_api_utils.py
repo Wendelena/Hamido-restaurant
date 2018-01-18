@@ -20,8 +20,6 @@ SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
 APPLICATION_NAME = 'Google Sheets API Python Access'
 # API URL
 API_URL = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
-# Menu object key
-MENU_KEY = 'Menu'
 # Cache file name
 MENU_CACHE = 'menu.cache'
 
@@ -30,12 +28,10 @@ MENU_CACHE = 'menu.cache'
 if not LOCAL:
     try:
         from oauth2client.contrib.flask_util import UserOAuth2
-        from google.appengine.api import memcache
     except ImportError:
         logging.exception('Not in GAE environment.')
         print('Not in GAE environment.')
         UserOAuth2 = None
-        memcache = None
 
 # Local python environment
 if LOCAL:
@@ -108,24 +104,17 @@ def get_sheets_info(sheet_id, sheet_range, cached=True):
         logging.info('Read from cache...')
         if LOCAL:
             print('Read from cache...')
-            # Read cached menu
-            try:
-                with open(MENU_CACHE, 'r') as cache:
-                    values = pickle.loads(cache.read())
-            except:
-                values = None
-        else:
-            try:
-                values = pickle.loads(memcache.get(MENU_KEY))
-            except TypeError:
-                values = None
-            except:
-                values = None
-                logging.warning('New error.')
+        # Read cached menu
+        try:
+            with open(MENU_CACHE, 'r') as cache:
+                values = pickle.loads(cache.read())
+        except:
+            values = None
 
         if not values:
             logging.info('Cache read fails. Request from API...')
-            print('Cache read fails. Request from API...')
+            if LOCAL:
+                print('Cache read fails. Request from API...')
         else:
             return values
 
@@ -147,7 +136,8 @@ def get_sheets_info(sheet_id, sheet_range, cached=True):
                 result = service.spreadsheets().values().get(
                     spreadsheetId=sheet_id, range=sheet_range).execute()
                 values = result.get('values', [])
-            return None
+            else:
+                return None
         else:
             logging.exception('Flask app OAuth not setup.')
             return None
@@ -157,11 +147,9 @@ def get_sheets_info(sheet_id, sheet_range, cached=True):
             logging.exception('Google spreadsheet read fails. Read cache...')
             if LOCAL:
                 print('Google spreadsheet read fails. Read cache...')
-                # Read cached menu
-                with open(MENU_CACHE, 'r') as cache:
-                    values = pickle.loads(cache.read())
-            else:
-                values = pickle.loads(memcache.get(MENU_KEY))
+            # Read cached menu
+            with open(MENU_CACHE, 'r') as cache:
+                values = pickle.loads(cache.read())
 
             if not values:
                 logging.error('Cache read fails.')
@@ -174,12 +162,9 @@ def get_sheets_info(sheet_id, sheet_range, cached=True):
         logging.info('Re-acquire values from Google Sheets API.')
         if LOCAL:
             print('Re-acquire values from Google Sheets API.')
-            # Cache page
-            with open(MENU_CACHE, 'w') as cache:
-                cache.write(pickle.dumps(values))
-        else:
-            # Cache page
-            memcache.set(MENU_KEY, pickle.dumps(values))
+        # Cache page
+        with open(MENU_CACHE, 'w') as cache:
+            cache.write(pickle.dumps(values))
         EVER_CACHED = True
 
     return values
