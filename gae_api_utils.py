@@ -3,6 +3,8 @@ from __future__ import print_function
 import logging
 import pickle
 
+from oauth2client.client import HttpAccessTokenRefreshError
+
 import flag_local
 from apiclient import discovery
 
@@ -64,6 +66,52 @@ def oauth_setup(app):
         return None
 
 
+def get_info_from_cache():
+    logging.info('Read from cache...')
+    if LOCAL:
+        print('Read from cache...')
+        # Read cached info
+        try:
+            with open(MENU_CACHE, 'r') as cache:
+                values = pickle.loads(cache.read())
+        except:
+            values = None
+            logging.warning('File reading error. Unable to get info.')
+    else:
+        # Read cached info from memcache
+        try:
+            values = pickle.loads(memcache.get(MENU_KEY))
+        except TypeError:
+            values = None
+            logging.warning('Type error. Unable to get info.')
+        except:
+            values = None
+            logging.exception('New error. Unable to get info.')
+
+    return values
+
+
+def set_info_in_cache(values):
+    logging.info('Set values in cache...')
+    if LOCAL:
+        print('Set values in cache...')
+        # Cache page
+        with open(MENU_CACHE, 'w') as cache:
+            cache.write(pickle.dumps(values))
+    else:
+        # Cache page into memcache
+        memcache.set(MENU_KEY, pickle.dumps(values))
+
+    # Set EVER_CACHED
+    global EVER_CACHED
+    EVER_CACHED = True
+    logging.info('Cache set.')
+    logging.info('EVER_CACHED = ' + EVER_CACHED)
+    if LOCAL:
+        print('Cache set.')
+        print('EVER_CACHED = ' + EVER_CACHED)
+
+
 def get_auth_http():
     if LOCAL:
         project_root = os.path.dirname(os.path.abspath(__file__))
@@ -89,98 +137,112 @@ def get_auth_http():
 
         return http
 
-    else:
-        if OAUTH2:
-            try:
-                http = OAUTH2.http()
-            except ValueError:
-                logging.exception('No credentials available.')
-                http = None
-        else:
-            logging.exception('Flask app OAuth not setup.')
+    elif OAUTH2:
+        try:
+            http = OAUTH2.http()
+        except ValueError:
+            logging.exception('No credentials available.')
             http = None
-        return http
+
+    else:
+        logging.exception('Flask app OAuth not setup.')
+        http = None
+
+    return http
 
 
 def get_sheets_info(sheet_id, sheet_range, cached=True):
     global EVER_CACHED
     if EVER_CACHED and cached:
-        logging.info('Read from cache...')
+        # Getting from cache
+        logging.warning('Acquiring cached info...')
         if LOCAL:
-            print('Read from cache...')
-            # Read cached menu
-            try:
-                with open(MENU_CACHE, 'r') as cache:
-                    values = pickle.loads(cache.read())
-            except:
-                values = None
-        else:
-            try:
-                values = pickle.loads(memcache.get(MENU_KEY))
-            except TypeError:
-                values = None
-            except:
-                values = None
-                logging.warning('New error.')
+            print('Acquiring cached info...')
+
+        # Read cache
+        values = get_info_from_cache()
 
         if not values:
-            logging.info('Cache read fails. Request from API...')
-            print('Cache read fails. Request from API...')
+            logging.exception('Cache read fails.')
+            if LOCAL:
+                print('Cache read fails.')
+            return None
         else:
+            logging.info('Cached info acquired.')
+            if LOCAL:
+                print('Cached info acquired.')
             return values
 
-    if LOCAL:
-        service = discovery.build('sheets', 'v4', http=get_auth_http(),
-                                  discoveryServiceUrl=API_URL)
+    elif cached:
+        # Invalid input: read cache before first caching
+        logging.warning('Invalid input: read cache before first caching.')
+        if LOCAL:
+            print('Invalid input: read cache before first caching.')
+        return None
 
+    # Requesting API (cached = False)
+    logging.warning('Acquiring info from Google Sheets API...')
+    if LOCAL:
+        print('Acquiring info from Google Sheets API...')
+
+    # Setting up service
+    if LOCAL:
+        # OAuth2 in local Python python environment
+        http = get_auth_http()
+        if http:
+            service = discovery.build('sheets', 'v4', http=http,
+                                      discoveryServiceUrl=API_URL)
+        else:
+            logging.exception('API request fails.')
+            print('API request fails.')
+            return None
+
+    elif OAUTH2:
+        # OAuth2 through GAE
+        http = get_auth_http()
+        if http:
+            service = discovery.build('sheets', 'v4', http=http)
+        else:
+            logging.exception('API request fails.')
+            return None
+    else:
+        # OAuth2 not setup on GAE
+        logging.exception('Flask app OAuth not setup. API request fails.')
+        return None
+
+    # Executing request and getting results
+    try:
         # Call the service using the authorized Http object.
         result = service.spreadsheets().values().get(
             spreadsheetId=sheet_id, range=sheet_range).execute()
         values = result.get('values', [])
-
-    else:
-        if OAUTH2:
-            http = get_auth_http()
-            if http:
-                service = discovery.build('sheets', 'v4', http=http)
-                # Call the service using the authorized Http object.
-                result = service.spreadsheets().values().get(
-                    spreadsheetId=sheet_id, range=sheet_range).execute()
-                values = result.get('values', [])
-            else:
-                return None
-        else:
-            logging.exception('Flask app OAuth not setup.')
-            return None
+    except HttpAccessTokenRefreshError:
+        logging.exception('Invalid grant. Bad request. API request fails.')
+        if LOCAL:
+            print('Invalid grant. Bad request. API request fails.')
+        return None
 
     if not values:
-        if not cached:
-            logging.exception('Google spreadsheet read fails. Read cache...')
-            if LOCAL:
-                print('Google spreadsheet read fails. Read cache...')
-                # Read cached menu
-                with open(MENU_CACHE, 'r') as cache:
-                    values = pickle.loads(cache.read())
-            else:
-                values = pickle.loads(memcache.get(MENU_KEY))
-
-            if not values:
-                logging.error('Cache read fails.')
-                print('Cache read fails.')
-        else:
-            logging.error('Request fails.')
-            print('Request fails.')
-            values = None
-    else:
-        logging.info('Re-acquire values from Google Sheets API.')
+        # Info got from request invalid, fall back to cache
+        logging.warning('Google spreadsheet read results invalid.')
         if LOCAL:
-            print('Re-acquire values from Google Sheets API.')
-            # Cache page
-            with open(MENU_CACHE, 'w') as cache:
-                cache.write(pickle.dumps(values))
-        else:
-            # Cache page
-            memcache.set(MENU_KEY, pickle.dumps(values))
-        EVER_CACHED = True
+            print('Google spreadsheet read results invalid.')
+
+        values = get_info_from_cache()
+
+        if not values:
+            logging.exception('Cache read fails.')
+            if LOCAL:
+                print('Cache read fails.')
+            return None
+
+    else:
+        # Values acquired
+        logging.info('Values acquired from Google Sheets API.')
+        if LOCAL:
+            print('Values acquired from Google Sheets API.')
+
+        # Cache page
+        set_info_in_cache(values)
 
     return values
