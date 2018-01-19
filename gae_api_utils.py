@@ -106,10 +106,10 @@ def set_info_in_cache(values):
     global EVER_CACHED
     EVER_CACHED = True
     logging.info('Cache set.')
-    logging.info('EVER_CACHED = ' + EVER_CACHED)
+    logging.info('EVER_CACHED = ' + str(EVER_CACHED))
     if LOCAL:
         print('Cache set.')
-        print('EVER_CACHED = ' + EVER_CACHED)
+        print('EVER_CACHED = ' + str(EVER_CACHED))
 
 
 def get_auth_http():
