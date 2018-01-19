@@ -14,6 +14,8 @@ EVER_CACHED = False
 
 # Flask app OAuth2
 OAUTH2 = None
+# OAuth2 Service
+OAUTH2_SERVICE = None
 # OAuth information
 CLIENT_SECRET_FILE = 'client_secret.json'
 # API scope
@@ -185,35 +187,38 @@ def get_sheets_info(sheet_id, sheet_range, cached=True):
     if LOCAL:
         print('Acquiring info from Google Sheets API...')
 
-    # Setting up service
-    if LOCAL:
-        # OAuth2 in local Python python environment
-        http = get_auth_http()
-        if http:
-            service = discovery.build('sheets', 'v4', http=http,
-                                      discoveryServiceUrl=API_URL)
-        else:
-            logging.exception('API request fails.')
-            print('API request fails.')
-            return None
+    # Setting up service if not set up
+    global OAUTH2_SERVICE
+    if not OAUTH2_SERVICE:
+        if LOCAL:
+            # OAuth2 in local Python python environment
+            http = get_auth_http()
+            if http:
+                OAUTH2_SERVICE = discovery.build(
+                    'sheets', 'v4', http=http, discoveryServiceUrl=API_URL)
+            else:
+                logging.exception('API request fails.')
+                print('API request fails.')
+                return None
 
-    elif OAUTH2:
-        # OAuth2 through GAE
-        http = get_auth_http()
-        if http:
-            service = discovery.build('sheets', 'v4', http=http)
+        elif OAUTH2:
+            # OAuth2 through GAE
+            http = get_auth_http()
+            if http:
+                OAUTH2_SERVICE = discovery.build('sheets', 'v4', http=http)
+            else:
+                logging.exception('API request fails.')
+                return None
+
         else:
-            logging.exception('API request fails.')
+            # OAuth2 not setup on GAE
+            logging.exception('Flask app OAuth not setup. API request fails.')
             return None
-    else:
-        # OAuth2 not setup on GAE
-        logging.exception('Flask app OAuth not setup. API request fails.')
-        return None
 
     # Executing request and getting results
     try:
         # Call the service using the authorized Http object.
-        result = service.spreadsheets().values().get(
+        result = OAUTH2_SERVICE.spreadsheets().values().get(
             spreadsheetId=sheet_id, range=sheet_range).execute()
         values = result.get('values', [])
     except HttpAccessTokenRefreshError:
